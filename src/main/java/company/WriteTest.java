@@ -12,6 +12,7 @@ import org.jsoup.safety.Whitelist;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class WriteTest {
     public static void stringToTxtFile(String str,String filename,String path){
@@ -49,6 +50,33 @@ public class WriteTest {
         return result;
     }
 
+    public static void correctImgLink(String pathname){
+        String text="",title;
+        try {
+            File myObj = new File(pathname);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                if(data.startsWith("imageLink:"))
+                    data=data.substring(0,data.indexOf("\"",12)+1);
+                text=text+data+"\n";
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter myWriter = new FileWriter(pathname);
+            myWriter.write(text);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     public static void writeTest(String filename,String path,String url) throws IOException {
         URL oracle = new URL(url);
         BufferedReader in = new BufferedReader(
@@ -58,29 +86,13 @@ public class WriteTest {
         while ((inputLine = in.readLine()) != null)
             html=html+inputLine;
         in.close();
+        html = html.replace("<img src=","<img src>imageLink: ");
         String txt = html2text(html);
         txt = txt.substring(txt.indexOf("Cảm ơn mọi người nhiều ạ"));
         txt = txt.substring(txt.indexOf("&nbsp;"));
         txt = txt.substring(0,txt.indexOf("Nội dung này không phải do Google tạo ra hay xác nhận"));
         System.out.println(txt);
         stringToTxtFile(txt,filename,path);
-    }
-
-    public static void main(String[] args) throws IOException {
-        String url = "https://docs.google.com/forms/d/e/1FAIpQLSfidkTQuor7awH8wpn65c9hPbRZ2_KDOmUv1B3btKtecQRpMw/viewscore?viewscore=AE0zAgBkjCPLLwNVIbNxQI8TykqJUNN8qyvSquuhzNZbVg9XgbNrLq6aACCBd6NSSAlk9sU";
-        URL oracle = new URL(url);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(oracle.openStream()));
-        String inputLine;
-        String html="";
-        while ((inputLine = in.readLine()) != null)
-            html=html+inputLine;
-        in.close();
-        html=html.replace("<img src=","<img src>imageLink: ");
-        String txt = html2text(html);
-        txt = txt.substring(txt.indexOf("Cảm ơn mọi người nhiều ạ"));
-        txt = txt.substring(txt.indexOf("&nbsp;"));
-        txt = txt.substring(0,txt.indexOf("Nội dung này không phải do Google tạo ra hay xác nhận"));
-        System.out.println(txt);
+        correctImgLink(path+filename+".txt");
     }
 }

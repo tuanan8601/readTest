@@ -39,7 +39,9 @@ public class ReadTest {
                 data.replace("&nbsp;","");
                 data=data.trim();
                 if(!data.startsWith("0/")&&!data.startsWith("1/")&&!data.isEmpty()&&
-                        !data.equals(" ")&&!data.equals("&nbsp;")&&!data.equals("Không đúng")) text=text+"\n"+data;
+                        !data.equals(" ")&&!data.equals("&nbsp;")&&!data.equals("Không đúng")&&
+                        !data.equals("Không có câu trả lời đúng")&&!data.equals("···")&&
+                        !data.equals("/1")) text=text+"\n"+data;
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -162,7 +164,7 @@ public class ReadTest {
                 String data = myReader.nextLine();
                 data=data.trim();
                 if(data.isEmpty()) continue;
-                if(!isAnswer(data)&&!data.equals("Câu trả lời đúng")&&!data.equals("Phản hồi")){
+                if(!isAnswer(data)&&!data.equals("Câu trả lời đúng")&&!data.equals("Phản hồi")&&!data.startsWith("imageLink: ")){
                     if(i>0){
                         System.out.println(question);
                         questions.add(question);
@@ -187,6 +189,11 @@ public class ReadTest {
                     data=data.trim();
 //                    System.out.println(i+". ctld_ "+data);
                     question.setFeedback(data);
+                }
+                else if(data.startsWith("imageLink: ")){
+                    String imgLink = data.substring(data.indexOf("\"")+1);
+                    imgLink = imgLink.substring(0,imgLink.length()-1);
+                    question.setImage(imgLink);
                 }
                 else if(isAnswer(data)){
 //                    System.out.println(i+". as_ "+data);
@@ -304,8 +311,8 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "htttql_phan1";
-        String url = "https://docs.google.com/forms/d/e/1FAIpQLSegPCTQL7bHatIUZ2H3ZLhcR3Z-2GVg8mUyNTbdbntQHBBDmQ/viewscore?viewscore=AE0zAgBc0b92oeJ32Ytmw3P02mv9Bl4cY1AJPWphdgTbvTDLG13GjryQ8YLRlBet_JePODw";
+        String readname = "minh_hoa_vi_mo";
+        String url = "https://docs.google.com/forms/d/e/1FAIpQLSfidkTQuor7awH8wpn65c9hPbRZ2_KDOmUv1B3btKtecQRpMw/viewscore?viewscore=AE0zAgBkjCPLLwNVIbNxQI8TykqJUNN8qyvSquuhzNZbVg9XgbNrLq6aACCBd6NSSAlk9sU";
         WriteTest.writeTest(readname,path,url);
 
         String correctname = readname + "_correct";

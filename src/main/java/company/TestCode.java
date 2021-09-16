@@ -39,12 +39,12 @@ public class TestCode {
                 map.put("feedback","nil");
             jedis.hmset("objectiveTest:1.question:"+i,map);
         }
-
-        HashSet<String> list = (HashSet<String>) jedis.keys("question:*");
-        Iterator<String> keys = list.iterator();
-        while (keys.hasNext()){
-            String key = keys.next();
-            System.out.println(key+" "+jedis.hgetAll(key));
-        }
+//
+//        HashSet<String> list = (HashSet<String>) jedis.keys("question:*");
+//        Iterator<String> keys = list.iterator();
+//        while (keys.hasNext()){
+//            String key = keys.next();
+//            System.out.println(key+" "+jedis.hgetAll(key));
+//        }
     }
 } 
