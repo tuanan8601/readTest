@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content=
+            "width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+</head>
+<style>
+    .iframe-item{
+        height: 100%;
+        width: 100%;
+        border:none;
+        allowfullscreen:true;
+    }
+    #myList a{
+        text-decoration:none;
+    }
+</style>
+<body>
+<header>
+
+</header>
+
+<main>
+    <div class="flex-container">
+        <div class="row" style="height: 100%">
+            <div class="col-2">
+                <div class="list-group" id="myList" role="tablist">
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vROHAgyQuOogzq4Dzqwuh2pkKKhmMU4rOt8TssCRjc5oMwDsKXcG1Uj_kfQwdG8P3uDknUrBJtJUcEp/pub" target="myIFrame" >Start</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vSirWCKOvyK-c2AjoA7ZhF-bmiRJ2nSCcL6tWT_abqtkNOTbGHHOslX8156n_8eazJrMagKP891N_-W/pub" target="myIFrame">Thông tin donate</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vQ4Tdr46Kyxtuveo6bdcoaVhcXCMVo69A8sqfXEPgHRvqzAVLiLbe_kDbWaWmD0ipYBbQeo08W4ZkfV/pub" target="myIFrame">Thông tin liên hệ</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vTn65eutbrvdJu3YENqw7n5zlN9E03FwO0ayl4rgOT1hNWpuG6DB0q7XS8nM7Ni7ZUfJwnSget5FG_w/pub" target="myIFrame">Dạng 1: Câu hỏi lý thuyết</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vTvHKkIP9Wzou5JmbgwGCgs5rnquBGNPcYUL3n82dGCKWB6WvRuuRq_FUv4azCB3YrX8jTVWg6li2NV/pub" target="myIFrame">Dạng 2: Mô hình thực thể liên kết và mô hình quan hệ</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vQfy1FgVs-3z080Pjf55aItFLaWTQJ3GhiZabYOb9z0LiDYU0HYyfIcCgFnP0_TK8B6eIMybTdTitjQ/pub" target="myIFrame">Dạng 3: Lược đồ quan hệ</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vR81XhoxHb9NVAU2huLdeoczpkTFw4ApMP1y3W6RO1UmitodsW54PP6YUhwvvF78yOhXf16UP4oRXgN/pub" target="myIFrame">Dạng 4: Đại số quan hệ và SQL</a>
+                    <a class="list-group-item list-group-item-action" href="https://docs.google.com/document/d/e/2PACX-1vR1jwuzOMmJK0uO3GHrAqTbj2Dw3n-ZH2VBzxaK7E2Qp3x_6NZrGXbOunwG-xlWsAwxH7lfTRT1hmbw/pub" target="myIFrame">TỔNG HỢP CÁC ĐỀ MINH HOẠ</a>
+                </div>
+
+            </div>
+            <div class="col-10">
+                <iframe class="iframe-item" src="https://docs.google.com/document/d/e/2PACX-1vTvHKkIP9Wzou5JmbgwGCgs5rnquBGNPcYUL3n82dGCKWB6WvRuuRq_FUv4azCB3YrX8jTVWg6li2NV/pub" name="myIFrame">Example</iframe>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+<script>
+    $(".list-group-item").click(function() {
+
+        // Select all list items
+        var listItems = $(".list-group-item");
+
+        // Remove 'active' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("active");
+        }
+
+        // Add 'active' tag for currently selected item
+        this.classList.add("active");
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
+</body>
+</html>

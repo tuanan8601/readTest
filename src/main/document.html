@@ -1,0 +1,1443 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <h1><strong>Dạng 3:</strong> Lược đồ quan hệ.</h1>
+    <p>** Giải thích một số thuật ngữ:</p>
+    <ul>
+        <li>
+            <p>Quan hệ: hiểu đơn giản là bảng</p>
+        </li>
+        <li>
+            <p>Lược đồ quan hệ: Tập hợp tên thuộc tính của một quan hệ được gọi là lược đồ quan hệ 🡪 nói dễ hiểu là tập hợp tên các cột (trường của bảng)</p>
+        </li>
+    </ul>
+    <h2>3.1. Tìm bao đóng, phủ tối thiểu:</h2>
+    <ul>
+        <li>Bao đóng:</li>
+    </ul>
+    <p><a href="https://drive.google.com/file/d/1GpU4rhUQz9cgH37agGhFLo4V9KPhl9r2/view?usp=sharing">https://drive.google.com/file/d/1GpU4rhUQz9cgH37agGhFLo4V9KPhl9r2/view?usp=sharing</a></p>
+    <ul>
+        <li>Phủ tối thiểu:</li>
+    </ul>
+    <p><a href="https://drive.google.com/file/d/1C7Ob2gTet69MNp760tP305EBg8cHdGNV/view?usp=sharing">https://drive.google.com/file/d/1C7Ob2gTet69MNp760tP305EBg8cHdGNV/view?usp=sharing</a></p>
+    <h3><strong>Ví dụ 3.1.1</strong> :</h3>
+    <p>Cho lược đồ quan hệ R = &amp;lt;U,F&amp;gt; với U = {A, B, C, D, E,I}</p>
+    <p>Và F= {BC -&amp;gt; DE, BE -&amp;gt; C, BI -&amp;gt; A, CE -&amp;gt; I}</p>
+    <p>Hãy chứng minh rằng BC -&amp;gt; A thuộc F+</p>
+    <p>_ <strong>Giải</strong> _</p>
+    <ol>
+        <li><em>Tính (BC)__+</em></li>
+    </ol>
+    <p>Bước 1: Đặt X0 = BC.</p>
+    <p>Bước 2: Tính các Xi</p>
+    <ul>
+        <li>X1 = BCDE (áp dụng BC -&amp;gt; DE).</li>
+        <li>X2 = BCDEI (áp dụng BC -&amp;gt; E, CE-&amp;gt; I)</li>
+        <li>X3 = ABCDEI (áp dụng BI -&amp;gt; A}</li>
+    </ul>
+    <p>Bước 3: (BC)+ = ABCDEI</p>
+    <ol>
+        <li><em>Vì A</em> <em>∈</em>(BC)+ nên BC -&amp;gt; A <em>∈</em> <em>F</em>_+_</li>
+    </ol>
+    <h2>3.2. Tìm khoá của lược đồ quan hệ:</h2>
+    <p>Lý thuyết, các bước tìm khoá:</p>
+    <p>Link: <a href="https://drive.google.com/file/d/1E9NQ7LHDlWjCqHXyJfbYlmrzHG5fsOyc/view?usp=sharing">https://drive.google.com/file/d/1E9NQ7LHDlWjCqHXyJfbYlmrzHG5fsOyc/view?usp=sharing</a></p>
+    <p><strong>Ví dụ 3.2.1:</strong> Cho lược đồ quan hệ R = &amp;lt;U, F&amp;gt;, Trong đó :</p>
+    <p>U = {ABC}</p>
+    <p>F = {A→B, B→A, C→B}</p>
+    <ol>
+        <li>Tìm tập khóa của lược đồ này</li>
+        <li>Tìm khóa tối thiểu của lược đồ này</li>
+    </ol>
+    <p>Giải</p>
+    <ol>
+        <li>Tìm tập khóa của lược đồ</li>
+    </ol>
+    <p><strong>Bước 1:</strong> L = {ABC}    R = {AB}. Từ đó có: TN = U\R = {C} và TG = L ∩ R = {AB}</p>
+    <p>Bước 2: Vì TG # 0 nên ta làm tiếp bước 3</p>
+    <p>Bước 3: Ta có tập con Xi của tập TG = {0, A, B, AB}</p>
+    <p>Bước 4: tìm siêu khóa Si theo bảng sau:</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Xi</th>
+            <th>TN ∪ Xi</th>
+            <th>Bao đóng củaTN ∪ Xi</th>
+            <th>Kiểm tra(TN ∪ Xi)+ = U+ ?</th>
+            <th>Siêu khóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>0</td>
+            <td>C</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>AC</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>AC</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>BC</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>BC</td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td>ABC</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>ABC</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Vậy ta có tập siêu khóa S = {C, AC, BC, ABC}. //Nếu đề bài yêu cầu tìm tập siêu khoá thì dừng lại ở bước này//</p>
+    <p>Bước 5: Tuy nhiên, vì C chứa trong AC, BC và ABC nên loại bỏ siêu khóa AC, BC và ABC ra khỏi tập siêu khóa.</p>
+    <p>Vậy ta có, tập khóa K = {C} là khóa của lược đồ quan hệ</p>
+    <ol>
+        <li>Tìm khóa tối thiểu của lược đồ</li>
+    </ol>
+    <p>Bước 1: gán K0 =U+ tức là K= {ABC}</p>
+    <p>Bước 2: tính bao đóng của K\Ai và kiểm tra xem có loại thuộc tính này ra khỏi khóa được không qua bảng sau đây</p>
+    <table>
+        <thead>
+        <tr>
+            <th><strong>Ai</strong></th>
+            <th><strong>K\Ai</strong></th>
+            <th>**(K\Ai)****+ **</th>
+            <th>** Kiểm tra (K\Ai) <strong><strong>+</strong>  <strong>có bằng U</strong></strong> + ****? **</th>
+            <th>** Có loại thuộc tính? **</th>
+            <th>** K**</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>A</td>
+            <td>BC</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>Loại A</td>
+            <td>BC</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>C</td>
+            <td>ABC</td>
+            <td>= U+</td>
+            <td>Loại B</td>
+            <td>C</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Vậy K={C}</p>
+    <h2>3.3 Chuẩn hoá</h2>
+    <p>Lý thuyết, các bước chuẩn hoá:</p>
+    <p>Link: <a href="https://drive.google.com/file/d/1nN_cytT8iS2O36WVwyp9iRaMumOEpOVv/view?usp=sharing">https://drive.google.com/file/d/1nN_cytT8iS2O36WVwyp9iRaMumOEpOVv/view?usp=sharing</a></p>
+    <h3><strong>Ví dụ 3.3.1</strong></h3>
+    <p>Cho lược đồ quan hệ</p>
+    <p>R= &amp;lt;U, F&amp;gt; với</p>
+    <p>U= {ABCDEFGHIJ} có khóa chính là A, B</p>
+    <p>Và</p>
+    <p>F = {AB -&amp;gt; CDEFGHIJ, A-&amp;gt; EFGHIJ, F-&amp;gt; IJ}</p>
+    <p>Hãy chuẩn hóa quan hệ R về dạng chuẩn 3NF</p>
+    <p>Giải</p>
+    <ol>
+        <li>R đạt chuẩn 1NF</li>
+        <li>R không đạt chuẩn 2NF vì có phụ thuộc hàm A-&amp;gt; E,F,G,H,I,J nên phải tách thành 2 quan hệ</li>
+    </ol>
+    <p>R1 có U1= {ABCD}</p>
+    <p>R2 có U2 = {AEFGHIJ}</p>
+    <ol>
+        <li>R2 không thỏa mãn 3NF vì có phụ thuộc hàm F-&amp;gt; IJ (F không phải là thuộc tính khóa) nên phải tách thành 2 quan hệ mới</li>
+    </ol>
+    <p>R21 có U21= {AEFGH}</p>
+    <p>R22 có U22= {FIJ)</p>
+    <p>Kết quả chúng ta có có 3 quan hệ: R1 với U1= {ABCD}, R21 với U21= {AEFGH} và R22 với U22= {FIJ}</p>
+    <h3><strong>Ví dụ 3.3.2</strong></h3>
+    <p>Cho quan hệ R(SoHD, MaKH, TenKH, DiaChiKH, NgayDathang, {MaHang, TenHang, SoLuong, ThanhTien}) với dữ liệu cho trong bảng sau (giả thiết rằng đơn giá của mỗi mặt hàng không thay đổi)</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Số hóa đơn</th>
+            <th>Mã khách hàng</th>
+            <th>Tên Khách hàng</th>
+            <th>Địa chỉ khách hàng</th>
+            <th>Ngày đặt hàng</th>
+            <th>Mã hàng</th>
+            <th>Tên hàng</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>KH001</td>
+            <td>Khách hàng số 1</td>
+            <td>Hà Nội</td>
+            <td>20/3/2020</td>
+            <td>K001</td>
+            <td>Kẹo mềm</td>
+            <td>2</td>
+            <td>20000</td>
+            <td>40000</td>
+        </tr>
+        <tr>
+            <td>B005</td>
+            <td>Bánh xốp</td>
+            <td>5</td>
+            <td>15000</td>
+            <td>75000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>N002</td>
+            <td>Nước ngọt</td>
+            <td>10</td>
+            <td>5000</td>
+            <td>50000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>KH002</td>
+            <td>Khách hàng số 2</td>
+            <td>Nam Định</td>
+            <td>20/3/2020</td>
+            <td>K002</td>
+            <td>Kẹo cứng</td>
+            <td>10</td>
+            <td>15000</td>
+            <td>150000</td>
+        </tr>
+        <tr>
+            <td>B001</td>
+            <td>Bánh quy</td>
+            <td>4</td>
+            <td>2500</td>
+            <td>100000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Hãy chuẩn hóa quan hệ này đén 3NF</p>
+    <p>Giải</p>
+    <ol>
+        <li><strong>Kiểm tra 1NF</strong></li>
+    </ol>
+    <p>R với U = {SoHD, MaKH, TenKH, DiaChiKH, NgayDathang, {Mahang, Tenhang, SoLuong, DonGia, ThanhTien}}</p>
+    <p>Ta thấy, nhóm thuộc tính {Mahang, Tenhang, SoLuong, DonGia, ThanhTien} là thuộc tính đa trị nên quan hệ này chưa đạt chuấn hóa 1NF =&amp;gt; tách thành 2 quan hệ sau (và thuộc tính ThanhTien là thuộc tính thứ sinh (được suy ra từ các thuộc tính SoLuong và DonGia) nên sẽ loại bỏ)</p>
+    <p>R1 với U1= {SoHD, MaKH, TenKH, DiaChiKH, NgayDathang}</p>
+    <p>R2 với U2 = {SoHD, Mahang, Tenhang, SoLuong, DonGia}</p>
+    <p>Tương ứng với 2 bảng sau</p>
+    <p>DON_DAT_HANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Số hóa đơn</th>
+            <th>Mã Khách hàng</th>
+            <th>Tên Khách hàng</th>
+            <th>Địa chỉ khách hàng</th>
+            <th>Ngày đặt hàng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>KH001</td>
+            <td>Khách hàng số 1</td>
+            <td>Hà Nội</td>
+            <td>20/3/2020</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>KH002</td>
+            <td>Khách hàng số 2</td>
+            <td>Nam Định</td>
+            <td>20/3/2020</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>HOADON_MATHANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Số hóa đơn</th>
+            <th>Mã hàng</th>
+            <th>Tên hàng</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>K001</td>
+            <td>Kẹo mềm</td>
+            <td>2</td>
+            <td>20000</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>B005</td>
+            <td>Bánh xốp</td>
+            <td>5</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>N002</td>
+            <td>Nước ngọt</td>
+            <td>10</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>K002</td>
+            <td>Kẹo cứng</td>
+            <td>10</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>B001</td>
+            <td>Bánh quy</td>
+            <td>4</td>
+            <td>2500</td>
+        </tr>
+        </tbody>
+    </table>
+    <ol>
+        <li><strong>Kiểm tra chuẩn 2NF</strong></li>
+    </ol>
+    <p>R1 với U1= {SoHD, MaKH, TenKH, DiaChiKH, NgayDathang} đạt chuẩn 2NF</p>
+    <p>R2 với U2 = {SoHD, Mahang, Tenhang, SoLuong, DonGia} chưa đạt chuẩn 2NF vì có chứa phụ thuộc hàm: Mahang -&amp;gt; Tenhang, Dongia, nên tách thành 2 quan hệ sau:</p>
+    <p>R21 với U21 = {SoHoadon, Mahang,SoLuong}</p>
+    <p>R22 với U22 = {Mahang, Tenhang, DonGia}</p>
+    <p>Tương ứng với 2 bảng sau</p>
+    <p>HOADON_MATHANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Số hóa đơn</th>
+            <th>Mã hàng</th>
+            <th>Số lượng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>K001</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>B005</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>N002</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>K002</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>B001</td>
+            <td>4</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>MAT_HANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã hàng</th>
+            <th>Tên hàng</th>
+            <th>Đơn giá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>K001</td>
+            <td>Kẹo mềm</td>
+            <td>20000</td>
+        </tr>
+        <tr>
+            <td>B005</td>
+            <td>Bánh xốp</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>N002</td>
+            <td>Nước ngọt</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>K002</td>
+            <td>Kẹo cứng</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>B001</td>
+            <td>Bánh quy</td>
+            <td>2500</td>
+        </tr>
+        </tbody>
+    </table>
+    <ol>
+        <li><strong>Kiểm tra chuẩn 3NF</strong></li>
+    </ol>
+    <p>Ta thấy các quan hệ sau thỏa mãn 3NF</p>
+    <p>R21 với U21 = {SoHoadon, Mahang, SoLuong}</p>
+    <p>R22 với U22 = {Mahang, Tenhang, DonGia}</p>
+    <p>R1 với U1 = {SoHD, MaKH, TenKH, NgayDathang} không đạt chuẩn 3NF vì có thuộc tính bắc cầu: MAKH -&amp;gt; TenKH, DiaChiKH, nên tách thành hai quan hệ sau:</p>
+    <p>R11 với U11 - {SoHD, MaKH, NgayDathang}</p>
+    <p>R12 với U12 = {MaKH, TenKH, DiaChiKH}</p>
+    <p>Tương ứng với 2 bảng sau</p>
+    <p>DON_DAT_HANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Số hóa đơn</th>
+            <th>Mã khách hàng</th>
+            <th>Ngày đặt hàng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>KH001</td>
+            <td>20/3/2020</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>KH002</td>
+            <td>20/3/2020</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>KHACH_HANG</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã khách hàng</th>
+            <th>Tên Khách hàng</th>
+            <th>Địa chỉ khách hàng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>KH001</td>
+            <td>Khách hàng số 1</td>
+            <td>Hà Nội</td>
+        </tr>
+        <tr>
+            <td>KH002</td>
+            <td>Khách hàng số 2</td>
+            <td>Nam Định</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>KL: Sau khi chuẩn hóa đến 3NF chúng ta có 4 quan hệ sau</p>
+    <p>R11 với U11 = {SoHD, MaKH, NgayDathang}</p>
+    <p>R12 với U12 = {MaKH, TenKH, DiaChiKH}</p>
+    <p>R21 với U21 = {SoHoadon, Mahang,SoLuong}</p>
+    <p>R22 với U22 = {Mahang, Tenhang, DonGia}</p>
+    <p>P/S: có thể tóm tắt các bước chuẩn hóa theo bảng sau đây</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Chưa chuẩn hóa</th>
+            <th>1NF</th>
+            <th>2NF</th>
+            <th>3NF</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><strong>DON_DAT_HANG</strong> SoHDMaKHTenKHDiaChiKHNgayDathangMaHang (R)TenHang (R)SoLuong (R)DonGia (R)~~ThanhTien (R, S)~~</td>
+            <td><strong>DON_DAT_HANG</strong> SoHDMaKHTenKHDiaChiKHNgayDathang</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <p><strong>HOADON_MATHANG</strong> SoHDMaHangTenHangSoLuongDonGia |</p>
+    <p>============🡺</p>
+    <p><strong>HOADON_MATHANG</strong> SoHDMahangSoLuong</p>
+    <p><strong>MATHANG</strong> MaHangTenHangDonGia | <strong>DON_DAT_HANG</strong> SoHDMaKHNgayDathang</p>
+    <p><strong>KHACH_HANG</strong> MaKHTenKHDiaChiKH</p>
+    <p>==========🡺</p>
+    <p>==========🡺
+        |</p>
+    <h3><strong>Ví dụ 3.3.3</strong></h3>
+    <p>Cho quan hệ</p>
+    <p>PHONGBAN (MaPB, TenPB, DiaChi, DTnoibo)</p>
+    <p>với dữ liệu được cho dưới dạng bảng sau</p>
+    <p><strong>PHÒNG BAN</strong></p>
+    <table>
+        <thead>
+        <tr>
+            <th><strong>Mã phòng ban</strong></th>
+            <th><strong>Tên phòng ban</strong></th>
+            <th><strong>Địa chỉ</strong></th>
+            <th><strong>Điện thoại nội bộ</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Ban giám đốc</td>
+            <td>Hà Nội</td>
+            <td>1111</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Phòng hành chính</td>
+            <td>Hà Nội</td>
+            <td>1112</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Phòng NCKH</td>
+            <td>Hà Nội</td>
+            <td>2111</td>
+        </tr>
+        <tr>
+            <td>Huế</td>
+            <td>2112</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>TP HCM</td>
+            <td>2113</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Phòng kỹ thuật</td>
+            <td>Hà Nội</td>
+            <td>3111</td>
+        </tr>
+        <tr>
+            <td>Huế</td>
+            <td>3112</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>TP HCM</td>
+            <td>3113</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Hãy kiểm tra xem quan hệ này đã đạt chuẩn 1NF hay chưa? Nếu chưa, hãy chuẩn hóa về 1NF</p>
+    <p><strong>Giải</strong></p>
+    <p>Quan hệ này vi phạm, chuẩn 1NF vì thuộc tính SoDTnoibo và Địa điểm là đa trị. Cần tách thành hai quan hệ sau</p>
+    <p>PHONGBAN (MaPB, TenPB)</p>
+    <p>PHONGBAN_DIACHI (MaPB, DiaChi, Dtnoibo)</p>
+    <p>PHÒNG BAN</p>
+    <table>
+        <thead>
+        <tr>
+            <th><strong>Mã phòng ban</strong></th>
+            <th><strong>Tên phòng ban</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Ban giám đốc</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Phòng hành chính</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Phòng NCKH</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Phòng kỹ thuật</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>PHÒNG BAN_DIACHI</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã phòng ban</th>
+            <th>Địa chỉ</th>
+            <th>Điện thoại nội bộ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Hà Nội</td>
+            <td>1111</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Hà Nội</td>
+            <td>1112</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Hà Nội</td>
+            <td>2111</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Huế</td>
+            <td>2112</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>TP HCM</td>
+            <td>2113</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Hà Nội</td>
+            <td>3111</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Huế</td>
+            <td>3112</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>TP HCM</td>
+            <td>3113</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3><strong>Ví dụ 3.3.4</strong></h3>
+    <p>Xét CSDL gồm 2 lược đồ quan hệ sau đây</p>
+    <p>HOCPHAN (MaHP, TenHP)</p>
+    <p>DIEMTHI (MaHP, MaSV, TenSV, NgaySinh, Diem)</p>
+    <p>Tương ứng với hai bảng sau đây</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã học phần</th>
+            <th>Tên học phần</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ti01</td>
+            <td>Tin học đại cương</td>
+        </tr>
+        <tr>
+            <td>Ht01</td>
+            <td>Tin học ứng dụng</td>
+        </tr>
+        <tr>
+            <td>Ti02</td>
+            <td>Cơ sở dữ liệu</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>DIEMTHI</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã học phần</th>
+            <th>Mã sinh viên</th>
+            <th>Tên sinh viên</th>
+            <th>Ngày sinh</th>
+            <th>Điểm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ti01</td>
+            <td>CQ610001</td>
+            <td>Nguyễn An</td>
+            <td>4/5/2000</td>
+            <td>7.5</td>
+        </tr>
+        <tr>
+            <td>Ti01</td>
+            <td>CQ610002</td>
+            <td>Lê Ngọc Anh</td>
+            <td>12/7/2000</td>
+            <td>8.0</td>
+        </tr>
+        <tr>
+            <td>Ti01</td>
+            <td>CQ612000</td>
+            <td>Vũ Văn Thanh</td>
+            <td>15/8/2000</td>
+            <td>5.0</td>
+        </tr>
+        <tr>
+            <td>Ht01</td>
+            <td>CQ602019</td>
+            <td>Phạm Lan Hương</td>
+            <td>3/7/1999</td>
+            <td>8.5</td>
+        </tr>
+        <tr>
+            <td>Ht01</td>
+            <td>CQ601190</td>
+            <td>Hoàng Văn Hậu</td>
+            <td>9/10/1998</td>
+            <td>6.0</td>
+        </tr>
+        <tr>
+            <td>Ti02</td>
+            <td>CQ590007</td>
+            <td>Vũ Lan Ngọc</td>
+            <td>14/5/1997</td>
+            <td>9.5</td>
+        </tr>
+        <tr>
+            <td>Ti002</td>
+            <td>CQ590018</td>
+            <td>Hoàng Văn Thụ</td>
+            <td>19/9/1007</td>
+            <td>4.5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Hãy kiểm tra xem quan hệ này đã đạt chuẩn 2NF hay chưa? Nếu chưa, hãy chuẩn hóa về 2NF.</p>
+    <p><strong>Giải:</strong></p>
+    <p>Quan hệ HOCPHAN (MaHP, TenHP) đạt chuẩn 2NF</p>
+    <p>Quan hệ DIEMTHI (MaHP, MaSV, TenSV, NgaySinh, Diem) không đạt chuẩn 2NF vì có sự phụ thuộc MaSV -&amp;gt; TenSV, NgaySinh nên phải tách thành 2 quan hệ</p>
+    <p>DIEMTHI (MaHP, MaSV, Diem) và SINHVIEN (MaSV, TenSV, NgaySinh)</p>
+    <h3><strong>Ví dụ 3.3.5</strong></h3>
+    <p>Cho lược đồ quan hệ R = &amp;lt;U, F&amp;gt; với U= {ABCD} và tập phụ thuộc hàm</p>
+    <p>F= {AB-&amp;gt;C, B -&amp;gt; D, BC -&amp;gt; A}</p>
+    <p>Hãy kiểm tra xem R có đạt chuẩn 2NF hay không?</p>
+    <p><strong>Giải:</strong></p>
+    <p><strong>Bước 1:</strong> Tìm tất cả các khóa của R. Xác định tập thuộc tính không khoá.</p>
+    <p>Ta có L = {ABC}, R = {ACD}, TN = {B}, TG = {AC}</p>
+    <p>Vì TG # 0 và tập con Xi của tập TG = {0, A, C, AC}</p>
+    <p>Tìm siêu khóa Si theo bảng sau:</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Xi</th>
+            <th>TN Xi</th>
+            <th>Bao đóng củaTN Xi</th>
+            <th>Kiểm tra(TN Xi)+ = U+ ?</th>
+            <th>Siêu khóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>0</td>
+            <td>B</td>
+            <td>BD</td>
+            <td>!= U+</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>AB</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>AB</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>BC</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>BC</td>
+        </tr>
+        <tr>
+            <td>AC</td>
+            <td>ABC</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>ABC</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Loại bỏ khóa ABC vì chứa AB và BC, ta có tập siêu khóa S = {AB, BC}.</p>
+    <p>Vậy các thuộc tính khóa là {A, B, C} và thuộc tính không khóa là {D}</p>
+    <p><strong>Bước 2:</strong> Tính (Xi)+ trong đó Xi là tập con thực sự của các khóa K.</p>
+    <ul>
+        <li>X1+ =A+ = A</li>
+        <li>X2+ = B + = BD</li>
+        <li>X3+ = C + = C</li>
+    </ul>
+    <p><strong>Bước 3:</strong> Vì X2+ chứa thuộc tính không khoá của D nên R không đạt chuẩn 2NF.</p>
+    <p><em>Cách 2: Khóa là AB, mà có phụ thuộc hàm B-&amp;gt;D có D phụ thuộc vào 1 bộ phận của khóa =&amp;gt; Nên ko đạt chuẩn 2NF.</em></p>
+    <h3>Ví dụ 3.3.6</h3>
+    <p>Cho lược đồ quan hệ R = &amp;lt;U, F&amp;gt; với U = {ABCD) và</p>
+    <p>F = {AB-&amp;gt;C, D -&amp;gt; B, C -&amp;gt; ABD}</p>
+    <p>Hãy kiểm tra xem R có đạt chuẩn 3NF?</p>
+    <p><strong>Giải</strong></p>
+    <p><strong>Bước 1:</strong> Tìm tất cả các khóa của R</p>
+    <ol>
+        <li>L = {ABCD}    R = {ABCD}. Từ đó có: TN = U\R = {0} và TG = L Ç R = {ABCD}</li>
+        <li>Vì TG # 0 và tập con Xi của tập TG = {0, A, C, B, C, D, AB, AC, AD, BC, BD, CD, ABC, ABD, BCD, ABCD}</li>
+        <li>Tìm siêu khóa Si theo bảng sau:</li>
+    </ol>
+    <table>
+        <thead>
+        <tr>
+            <th>Xi</th>
+            <th>TN Xi</th>
+            <th>Bao đóng củaTN Xi</th>
+            <th>Kiểm tra(TN Xi)+ = U+ ?</th>
+            <th>Siêu khóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>A</td>
+            <td>A</td>
+            <td>A</td>
+            <td>!= U+</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>!= U+</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>C</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td>AB</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>AB</td>
+        </tr>
+        <tr>
+            <td>AC</td>
+            <td>AC</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>AC</td>
+        </tr>
+        <tr>
+            <td>AD</td>
+            <td>AD</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>AD</td>
+        </tr>
+        <tr>
+            <td>BC</td>
+            <td>BC</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>BC</td>
+        </tr>
+        <tr>
+            <td>BD</td>
+            <td>BD</td>
+            <td>BD</td>
+            <td>!= U+</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>CD</td>
+            <td>CD</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>CD</td>
+        </tr>
+        <tr>
+            <td>ABC</td>
+            <td>ABC</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>ABC</td>
+        </tr>
+        <tr>
+            <td>ABD</td>
+            <td>ABD</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>ABD</td>
+        </tr>
+        <tr>
+            <td>BCD</td>
+            <td>BCD</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>BCD</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>ABCD</td>
+            <td>ABCD</td>
+            <td>= U+</td>
+            <td>ABCD</td>
+        </tr>
+        </tbody>
+    </table>
+    <p><strong>u</strong></p>
+    <p>Sau khi loại bỏ các thuộc tính chứa khóa {C} và khóa {AB} chúng ta có tập khóa</p>
+    <p>K = {C, AB, AD}</p>
+    <p><strong>Bước 2:</strong> tập thuộc tính không khóa là {0}</p>
+    <p><strong>Bước 3:</strong> Mọi phụ thuộc hàm đều có vế phải là thuộc tính khóa nên R đạt chuẩn 3NF.</p>
+    <ol>
+        <li></li>
+    </ol>
+    <h2>Bảo toàn thông tin</h2>
+    <h3>Thuật toán bảo toàn thông tin:</h3>
+    <p>Bước 1: Lập bảng ban đầu có k hàng (ứng với k lược đồ quan hệ con), n cột ứng với n tập thuộc tính {A1, A2 ,…,An }. Hàng i ứng với lược đồ quan hệ Ui , cột j ứng với thuộc tính Aj . Tại ô (i, j) điền ký hiệu aj nếu Aj ∈ Ui , ngược lại nếu Aj∉ Ui ta điền ký hiệu bij (trong đó aj , bij thuộc miền xác định của Aj ).</p>
+    <p>Bước 2: Xét lần lượt phụ thuộc hàm trong F và áp dụng các phụ thuộc hàm này cho bảng vừa xây dựng. Giả sử, ta đang xét phụ thuộc hàm X → Y ∈ F: Nếu tồn tại các dòng dữ liệu có giá trị bằng nhau trên tập thuộc tính X thì làm bằng giá trị của chúng trên tập thuộc tính Y theo nguyên tắc sau: Nếu thấy một ký hiệu tương ứng với Y là aj thì đồng nhất các ký hiệu này là aj, ngược lại thì đồng nhất bằng một trong các ký hiệu bij</p>
+    <p>Bước 3: Tiếp tục áp dụng các phụ thuộc hàm cho bảng (kể cả việc lặp lại các phụ thuộc hàm đã được áp dụng) cho đến khi không thay đổi giá trị trong bảng hoặc đến khi xuất hiện một dòng toàn ký hiệu a1 , a2 , a3 ,....ai ,...,an .</p>
+    <p>Bước 4: Cuối cùng, xem bảng kết quả: Nếu tồn tại một dòng toàn ký hiệu a1 , a2 , a3 ,....ai ,...,an thì kết luận phép tách là bảo toàn thông tin, ngược lại thì kết luận phép tách không bảo toàn thông tin</p>
+    <h3><strong>Ví dụ 3.4.1</strong></h3>
+    <p>Cho quan hệ: <strong>R(MaSV, MaMonhoc, Diem)</strong></p>
+    <p>Với dữ liệu được cho trong bảng sau</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã sinh viên</th>
+            <th>Mã môn học</th>
+            <th>Điểm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>CQ590001</td>
+            <td>Ti01</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>CQ590002</td>
+            <td>Ti01</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>CQ590003</td>
+            <td>Ti01</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Hi01</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Ti02</td>
+            <td>8</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Nếu tách quan hệ R thành 2 quan hệ <strong>R1(MaSV, MaMonhoc)</strong> và <strong>R2 (MaMonhoc, Diem)</strong> như sau</p>
+    <p>R1</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã sinh viên</th>
+            <th>Mã môn học</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>CQ590001</td>
+            <td>Ti01</td>
+        </tr>
+        <tr>
+            <td>CQ590002</td>
+            <td>Ti01</td>
+        </tr>
+        <tr>
+            <td>CQ590003</td>
+            <td>Ti01</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Hi01</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Ti02</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Và</p>
+    <p>R2</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã môn học</th>
+            <th>Điểm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ti01</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>Ti01</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>Ti01</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Hi01</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Ti02</td>
+            <td>8</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Hãy kiểm tra xem phép tách này có bị mất mát thông tin hay không?</p>
+    <p><strong>Giải</strong></p>
+    <p>Thực hiện phép kết nối tự nhiên 2 quan hệ R1*R2 ta có</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã sinh viên</th>
+            <th>Mã môn học</th>
+            <th>Điểm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>CQ590001</td>
+            <td>Ti01</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>CQ590001</td>
+            <td>Ti01</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>CQ590001</td>
+            <td>Ti01</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>CQ590002</td>
+            <td>Ti01</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>CQ590002</td>
+            <td>Ti01</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>CQ590002</td>
+            <td>Ti01</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>CQ590003</td>
+            <td>Ti01</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>CQ590003</td>
+            <td>Ti01</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>CQ590003</td>
+            <td>Ti01</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Hi01</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>CQ590004</td>
+            <td>Ti02</td>
+            <td>8</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Như vậy khi nối tự nhiên hai bảng ta nhận được quan hệ không giống quan hệ ban đầu =&amp;gt; Phép phân rã trên là mất thông tin</p>
+    <h3>Ví dụ 3.4.2</h3>
+    <p>Cho R = &amp;lt;U,F&amp;gt; với U = {ABCDE} và</p>
+    <p>F = { A 🡪 C, B 🡪 C, C 🡪 D, DE 🡪 C, CE 🡪 A}</p>
+    <p>Giả sử R được tách thành D = {U1, U2, U3, U4, U5} với</p>
+    <p>U1 = {AD}, U2 = {AB}, U3 = {BE}, U4 = {CDE} và U5 = {AE}.</p>
+    <p>Hãy sử dụng thuật toán để kiểm tra xem phép tách này có được bảo toàn thông tin hay không?</p>
+    <p><strong>Giải</strong></p>
+    <p>ta có bảng đầu tiên như sau:</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b23</td>
+            <td>b24</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>b31</td>
+            <td>a2</td>
+            <td>b33</td>
+            <td>b34</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>b41</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>b53</td>
+            <td>b54</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Do A 🡪 C và hai hàng bằng nhau trên A, chúng ta có thể làm bằng nhau các ký hiệu đối với các thuộc tính C, cụ thể b13, b23 và b53 thành b13</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>b24</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>b31</td>
+            <td>a2</td>
+            <td>b33</td>
+            <td>b34</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>b41</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>b13</td>
+            <td>b54</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Sử dụng B 🡪 C và hai hàng bằng nhau trên B, chúng ta có thể làm bằng nhau các ký hiệu đối với các thuộc tính C, cụ thể b33 thành b13</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>b24</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>b31</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>b34</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>b41</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>b13</td>
+            <td>b54</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Sử dụng C 🡪 D và hai hàng bằng nhau trên C, chúng ta có thể làm bằng nhau các ký hiệu đối với các thuộc tính D, cụ thể b24, b34, b54 thành a4</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>b31</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>b41</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Sử dụng DE 🡪 C và hai hàng bằng nhau trên DE, chúng ta có thể làm bằng nhau các ký hiệu đối với các thuộc tính D, cụ thể b13 thành a3</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>b31</td>
+            <td>a2</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>b41</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Cuối cùng, sử dụng CE 🡪 A và hai hàng bằng nhau trên DE, chúng ta có thể làm bằng nhau các ký hiệu đối với các thuộc tính D, cụ thể b13 thành a3</p>
+    <table>
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>a1</td>
+            <td>b12</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b15</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>b13</td>
+            <td>a4</td>
+            <td>b25</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>a2</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b42</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        <tr>
+            <td>a1</td>
+            <td>b52</td>
+            <td>a3</td>
+            <td>a4</td>
+            <td>a5</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Trong bảng cuối cùng thu được có dòng giữa bao gồm các kí hiệu a. Do đó phép tách này không mất mát thông tin.</p>
+</div>
+</body>
+</html>
