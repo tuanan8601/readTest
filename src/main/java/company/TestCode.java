@@ -24,21 +24,21 @@ public class TestCode {
         Jedis jedis = new Jedis("localhost");
         System.out.println("Connection to server sucessfully");
 
-//        List<Question> questionList = ReadTest.readTest(pathRead);
-//        int i=getMaxQuestionIndex();
-//        Map<String,String> map;
-//        for (Question q:questionList) {
-//            i++;
-//            map=new HashMap<>();
-//            map.put("title",q.getTitle());
-//            map.put("solution",q.getSolution());
-//            map.put("solutionHead",String.valueOf(q.getSolutionHead()));
-//            if(q.getFeedback()!=null)
-//                map.put("feedback",q.getFeedback());
-//            else
-//                map.put("feedback","nil");
-//            jedis.hmset("objectiveTest:1.question:"+i,map);
-//        }
+        List<Question> questionList = ReadTest.readTest(pathRead);
+        int i=getMaxQuestionIndex();
+        Map<String,String> map;
+        for (Question q:questionList) {
+            i++;
+            map=new HashMap<>();
+            map.put("title",q.getTitle());
+            map.put("solution",q.getSolution());
+            map.put("solutionHead",String.valueOf(q.getSolutionHead()));
+            if(q.getFeedback()!=null)
+                map.put("feedback",q.getFeedback());
+            else
+                map.put("feedback","nil");
+            jedis.hmset("objectiveTest:1.question:"+i,map);
+        }
 
         HashSet<String> list = (HashSet<String>) jedis.keys("question:*");
         Iterator<String> keys = list.iterator();
