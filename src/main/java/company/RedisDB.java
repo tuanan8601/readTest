@@ -162,20 +162,20 @@ public class RedisDB {
 
 
 
-        String readname = "test";
-        String pathRead = path+readname+".txt";
-
-        ObjectiveTest objectiveTest = new ObjectiveTest();
-        objectiveTest.setId(getMaxIndex("objectivetest")+1);
-        objectiveTest.setTestName(readname);
-
-        Subject subject = new Subject();
-        subject.setId(getMaxIndex("subject")+1);
-        subject.setName("Pháp luật đại cương");
-        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
-        subject.setType("đại cương");
-
-        addQuestionList(pathRead,jedis,objectiveTest,subject);
+//        String readname = "phan1_htttql";
+//        String pathRead = path+readname+".txt";
+//
+//        ObjectiveTest objectiveTest = new ObjectiveTest();
+//        objectiveTest.setId(getMaxIndex("objectivetest")+1);
+//        objectiveTest.setTestName(readname);
+//
+//        Subject subject = new Subject();
+//        subject.setId(getMaxIndex("subject")+1);
+//        subject.setName("Hệ thống thông tin quản lý");
+//        subject.setPoster("");
+//        subject.setType("chuyên ngành");
+//
+//        addQuestionList(pathRead,jedis,objectiveTest,subject);
 
 
 
@@ -186,7 +186,7 @@ public class RedisDB {
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
 //        deleteIndex("*",jedis);
 //        deleteAllObject("*",jedis);
-//        readHashObject("objectivetest",jedis);
+//        readHashObject("question",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("objectivetestset:*",jedis);
 //        System.out.println(getMaxIndex("answer"));
