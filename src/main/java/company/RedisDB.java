@@ -187,7 +187,7 @@ public class RedisDB {
 //        deleteAllObject("*",jedis);
 //        readHashObject("question",jedis);
 //        readListObject("answer:question",jedis);
-//        readSetObject("objectivetestset:*",jedis);
+//        readSetObject("subjecttypeindex",jedis);
 //        System.out.println(getMaxIndex("answer"));
     }
 } 
