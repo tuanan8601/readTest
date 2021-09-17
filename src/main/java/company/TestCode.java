@@ -9,21 +9,30 @@ import redis.clients.jedis.Jedis;
 import java.util.*;
 
 public class TestCode {
-    public static int getMaxIndex(String objectname){
+    public static long getMaxIndex(String objectname){
         Jedis jedis = new Jedis("localhost");
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
-        List<Integer> index = new ArrayList<>();
+        List<Long> index = new ArrayList<>();
         list.forEach(d->{
             int length = d.split(":").length;
-            index.add(Integer.parseInt(d.split(":")[length-1]));
+            index.add(Long.parseLong(d.split(":")[length-1]));
         });
-        index.add(0);
+        index.add(0L);
         return Collections.max(index);
     }
-    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest, Subject subject){
+    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest){
         List<Question> questionList = ReadTest.readTest(pathRead);
-        int i=getMaxIndex("question");
+        long i=getMaxIndex("question");
         Map<String,String> map;
+
+        map = new HashMap<>();
+        map.put("id",String.valueOf(objectiveTest.getId()));
+        map.put("testname",objectiveTest.getTestName());
+        if(objectiveTest.getPoster()!=null)
+            map.put("poster",objectiveTest.getPoster());
+        jedis.hmset("objectivetest:"+objectiveTest.getId(),map);
+        jedis.sadd("objectivetestindex:"+objectiveTest.getTestName(),""+objectiveTest.getId());
+
         for (Question q:questionList) {
             i++;
             map=new HashMap<>();
@@ -32,20 +41,28 @@ public class TestCode {
             map.put("solutionHead",String.valueOf(q.getSolutionHead()));
             if(q.getFeedback()!=null)
                 map.put("feedback",q.getFeedback());
-            else
-                map.put("feedback","nil");
-            if(q.getFeedback()!=null)
+            if(q.getImage()!=null)
                 map.put("image",q.getFeedback());
-            else
-                map.put("image","nil");
             jedis.hmset("question:"+i,map);
             for (Answer answer:q.getAnswers()) {
                 jedis.lpush("answer:question:"+i,answer.getAnswer());
             }
+            jedis.sadd("questionset:objectivetest:"+objectiveTest.getId(),String.valueOf(i));
         }
     }
-    public static void readListObject (String objectname,Jedis jedis){
+    public static void addOT2Subject(Jedis jedis, Subject subject, ObjectiveTest objectiveTest){
 
+    }
+    public static void readListObject (String objectname,Jedis jedis){
+        HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
+        System.out.println(list);
+        Iterator<String> keys = list.iterator();
+        long len;
+        while (keys.hasNext()){
+            String key = keys.next();
+            len = jedis.llen(key);
+            System.out.println(key+" "+jedis.lrange(key,1,len));
+        }
     }
     public static void readHashObject(String objectname,Jedis jedis){
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
@@ -54,6 +71,15 @@ public class TestCode {
         while (keys.hasNext()){
             String key = keys.next();
             System.out.println(key+" "+jedis.hgetAll(key));
+        }
+    }
+    public static void readSetObject(String objectname,Jedis jedis){
+        HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
+        System.out.println(list);
+        Iterator<String> keys = list.iterator();
+        while (keys.hasNext()){
+            String key = keys.next();
+            System.out.println(key+" "+jedis.smembers(key));
         }
     }
     public static void deleteAllObject(String objectname,Jedis jedis){
@@ -74,12 +100,23 @@ public class TestCode {
         Jedis jedis = new Jedis("localhost");
         System.out.println("Connection to server sucessfully");
 
-        ObjectiveTest objectiveTest = new ObjectiveTest();
-        Subject subject = new Subject();
+//        ObjectiveTest objectiveTest = new ObjectiveTest();
+//        objectiveTest.setId(getMaxIndex("objectivetest")+1);
+//        objectiveTest.setTestName(readname);
+//        addQuestionList(pathRead,jedis,objectiveTest);
 
-        addQuestionList(pathRead,jedis,objectiveTest,subject);
-//        deleteAllObject("question",jedis);
+        Subject subject = new Subject();
+        subject.setId(getMaxIndex("subject")+1);
+        subject.setName("Chủ nghĩa xã hội khoa học");
+        subject.setPoster("");
+        subject.setType("đại cương");
+
+
+
+//        deleteAllObject("*",jedis);
 //        readHashObject("question",jedis);
-        System.out.println(getMaxIndex("question"));
+//        readListObject("answer:question",jedis);
+//        readSetObject("objectivetestindex",jedis);
+//        System.out.println(getMaxIndex("answer"));
     }
 } 

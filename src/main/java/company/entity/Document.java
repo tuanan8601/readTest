@@ -9,9 +9,9 @@ import java.util.Map;
 
 @Data
 public class Document {
-    int id;
+    long id;
     String docName;
 //    ObjectId subject_id;
-    int subject_id;
+    long subject_id;
     String link;
 }

@@ -11,13 +11,13 @@ import java.util.Map;
 
 @Data
 public class Subject {
-    int id;
+    long id;
     String name;
     String type;
     String poster;
 //    Map<String,ObjectId> objectiveTest_map = new HashMap();
-    Map<String,Integer> objectiveTest_id = new HashMap<>();
+    Map<String,Long> objectiveTest_id = new HashMap<>();
 //    ObjectId document_id;
-    int document_id;
+    long document_id;
 }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public class Question {
-    int id;
+    long id;
     String title;
     List<Answer> answers = new ArrayList<>();
     String solution;
