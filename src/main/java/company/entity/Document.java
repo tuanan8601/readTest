@@ -13,6 +13,5 @@ public class Document {
     String docName;
 //    ObjectId subject_id;
     int subject_id;
-    String poster;
     String link;
 }
