@@ -35,9 +35,11 @@ public class RedisDB {
             jedis.hmset("subject:" + subject.getId(), map);
             jedis.hsetnx("subjectindex", subject.getName(), "" + subject.getId());
             jedis.sadd("subjecttypeindex:" + subject.getType(), "" + subject.getId());
-            jedis.sadd("objectivetestset:" + subject.getId(), "" + objectiveTest.getId());
         }
-        else System.out.println("Môn học đã có");
+        else {
+            System.out.println("Môn học đã có");
+            subject.setId(Long.parseLong(jedis.hget("subjectindex", subject.getName())));
+        }
 
         if(!jedis.hexists("objectivetestindex",objectiveTest.getTestName())) {
             map = new HashMap<>();
@@ -45,19 +47,23 @@ public class RedisDB {
             map.put("testname", objectiveTest.getTestName());
             if (objectiveTest.getPoster() != null)
                 map.put("poster", objectiveTest.getPoster());
+            map.put("subject_id",String.valueOf(subject.getId()));
             jedis.hmset("objectivetest:" + objectiveTest.getId(), map);
             jedis.hsetnx("objectivetestindex", objectiveTest.getTestName(), "" + objectiveTest.getId());
+            jedis.sadd("objectivetestset:subject:" + subject.getId(), "" + objectiveTest.getId());
 
             for (Question q : questionList) {
                 i++;
                 map = new HashMap<>();
                 map.put("title", q.getTitle());
-                map.put("solution", q.getSolution());
-                map.put("solutionHead", String.valueOf(q.getSolutionHead()));
+                if(q.getSolution()!=null) {
+                    map.put("solution", q.getSolution());
+                    map.put("solutionHead", String.valueOf(q.getSolutionHead()));
+                }
                 if (q.getFeedback() != null)
                     map.put("feedback", q.getFeedback());
                 if (q.getImage() != null)
-                    map.put("image", q.getFeedback());
+                    map.put("image", q.getImage());
                 jedis.hmset("question:" + i, map);
                 for (Answer answer : q.getAnswers()) {
                     jedis.lpush("answer:question:" + i, answer.getAnswer());
@@ -66,6 +72,38 @@ public class RedisDB {
             }
         }
         else System.out.println("Bài trắc nghiệm đã có");
+    }
+    public static void objectiveTestDel(String oTName, Jedis jedis){
+        String i = jedis.hget("objectivetestindex",oTName);
+        System.out.println(i);
+        if(i!=null) {
+            String qset_key = "questionset:objectivetest:" + i;
+            Set<String> questionset = jedis.smembers(qset_key);
+            System.out.println(questionset);
+            Iterator<String> keys = questionset.iterator();
+            while (keys.hasNext()) {
+                String id = keys.next();
+                String key = "question:" + id;
+                String a_key = "answer:question:" + id;
+                System.out.print(key + " ");
+                System.out.print(a_key + " ");
+                jedis.del(key);
+                jedis.del(a_key);
+            }
+            String oT_key = "objectivetest:" + i;
+            System.out.println("\n" + jedis.hgetAll(oT_key));
+            System.out.println(qset_key);
+            jedis.del(qset_key);
+            String oTs_key = "objectivetestset:subject:" + jedis.hget(oT_key, "subject_id");
+            System.out.println(oTs_key);
+            jedis.srem(oTs_key, i);
+            System.out.println(oT_key);
+            jedis.del(oT_key);
+            String oTi_key = "objectivetestindex";
+            System.out.println(oTi_key + "," + oTName);
+            jedis.hdel(oTi_key, oTName);
+        }
+        else System.out.println("Không có bài trắc nghiệm này");
     }
     public static void readListObject (String objectname,Jedis jedis){
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
@@ -123,30 +161,34 @@ public class RedisDB {
 
 
 
-//        String readname = "tong_hop_cnxhkh";
-//        String pathRead = path+readname+".txt";
-//
-//        ObjectiveTest objectiveTest = new ObjectiveTest();
-//        objectiveTest.setId(getMaxIndex("objectivetest")+1);
-//        objectiveTest.setTestName(readname);
-//
-//        Subject subject = new Subject();
-//        subject.setId(getMaxIndex("subject")+1);
-//        subject.setName("Chủ nghĩa xã hội khoa học");
-//        subject.setPoster("");
-//        subject.setType("đại cương");
-//
-//        addQuestionList(pathRead,jedis,objectiveTest,subject);
+
+        String readname = "test";
+        String pathRead = path+readname+".txt";
+
+        ObjectiveTest objectiveTest = new ObjectiveTest();
+        objectiveTest.setId(getMaxIndex("objectivetest")+1);
+        objectiveTest.setTestName(readname);
+
+        Subject subject = new Subject();
+        subject.setId(getMaxIndex("subject")+1);
+        subject.setName("Pháp luật đại cương");
+        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
+        subject.setType("đại cương");
+
+        addQuestionList(pathRead,jedis,objectiveTest,subject);
 
 
 
 
-//        System.out.println(jedis.hgetAll("subjectindex"));
+
+
+//        objectiveTestDel("minh_hoa_vi_mo",jedis);
+//        System.out.println(jedis.hgetAll("objectivetestindex"));
 //        deleteIndex("*",jedis);
 //        deleteAllObject("*",jedis);
-//        readHashObject("question",jedis);
-//        readListObject("question",jedis);
-//        readSetObject("subjectindex",jedis);
+//        readHashObject("objectivetest",jedis);
+//        readListObject("answer:question",jedis);
+//        readSetObject("objectivetestset:*",jedis);
 //        System.out.println(getMaxIndex("answer"));
     }
 } 
