@@ -91,7 +91,7 @@ public class WriteTest {
         txt = txt.substring(txt.indexOf("Cảm ơn mọi người nhiều ạ"));
         txt = txt.substring(txt.indexOf("&nbsp;"));
         txt = txt.substring(0,txt.indexOf("Nội dung này không phải do Google tạo ra hay xác nhận"));
-        System.out.println(txt);
+//        System.out.println(txt);
         stringToTxtFile(txt,filename,path);
         correctImgLink(path+filename+".txt");
     }
