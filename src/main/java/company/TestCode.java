@@ -3,6 +3,7 @@ package company;
 import company.entity.Answer;
 import company.entity.ObjectiveTest;
 import company.entity.Question;
+import company.entity.Subject;
 import redis.clients.jedis.Jedis;
 
 import java.util.*;
@@ -19,7 +20,7 @@ public class TestCode {
         index.add(0);
         return Collections.max(index);
     }
-    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest){
+    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest, Subject subject){
         List<Question> questionList = ReadTest.readTest(pathRead);
         int i=getMaxIndex("question");
         Map<String,String> map;
@@ -73,7 +74,10 @@ public class TestCode {
         Jedis jedis = new Jedis("localhost");
         System.out.println("Connection to server sucessfully");
 
-//        addQuestionList(pathRead,jedis);
+        ObjectiveTest objectiveTest = new ObjectiveTest();
+        Subject subject = new Subject();
+
+        addQuestionList(pathRead,jedis,objectiveTest,subject);
 //        deleteAllObject("question",jedis);
 //        readHashObject("question",jedis);
         System.out.println(getMaxIndex("question"));
