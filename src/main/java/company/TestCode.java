@@ -13,7 +13,8 @@ public class TestCode {
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
         List<Integer> index = new ArrayList<>();
         list.forEach(d->{
-            index.add(Integer.parseInt(d.split(":")[1]));
+            int length = d.split(":").length;
+            index.add(Integer.parseInt(d.split(":")[length-1]));
         });
         index.add(0);
         return Collections.max(index);
@@ -75,5 +76,6 @@ public class TestCode {
 //        addQuestionList(pathRead,jedis);
 //        deleteAllObject("question",jedis);
 //        readHashObject("question",jedis);
+        System.out.println(getMaxIndex("question"));
     }
 } 
