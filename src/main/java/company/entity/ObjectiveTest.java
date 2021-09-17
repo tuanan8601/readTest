@@ -8,10 +8,10 @@ import java.util.List;
 
 @Data
 public class ObjectiveTest {
-    int id;
+//    int id;
     String testName;
-//    ObjectId subject_id;
-    int subject_id;
+    ObjectId subject_id;
+//    int subject_id;
     String poster;
     List<Question> questions = new ArrayList<>();
 }
