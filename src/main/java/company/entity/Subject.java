@@ -17,6 +17,7 @@ public class Subject {
     String poster;
 //    Map<String,ObjectId> objectiveTest_map = new HashMap();
     Map<String,Integer> objectiveTest_id = new HashMap<>();
+//    ObjectId document_id;
     int document_id;
 }
 
