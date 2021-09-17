@@ -116,15 +116,16 @@ public class RedisDB {
     }
     public static void main(String[] args) {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "tong_hop_cnxhkh";
-        String pathRead = path+readname+".txt";
-
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis("localhost");
         System.out.println("Connection to server sucessfully");
 
 
 
+
+//        String readname = "tong_hop_cnxhkh";
+//        String pathRead = path+readname+".txt";
+//
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest")+1);
 //        objectiveTest.setTestName(readname);
