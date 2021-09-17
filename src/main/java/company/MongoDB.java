@@ -40,7 +40,7 @@ public class MongoDB {
         if(s!=null && objective_tests.find(eq("testName",objectiveTest.getTestName())).first()==null) {
             System.out.println(s);
             ObjectId subjectid = (ObjectId) s.get("_id");
-            objectiveTest.setSubject_id(subjectid);
+//            objectiveTest.setSubject_id(subjectid);
             objective_tests.insertOne(objectiveTest);
             FindIterable<Document> oList = objective_tests_doc.find(eq("subject_id",(ObjectId)s.get("_id")));
             if(oList.first()!=null){
@@ -56,39 +56,39 @@ public class MongoDB {
         else System.out.println("Không thêm bài trắc nghiệm nào");
     }
 
-    public static void main(String[] args) {
-        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        ConnectionString connectionString = new ConnectionString("mongodb+srv://tuanan8601:fourin1234@cluster0.u4rda.mongodb.net");
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .applyConnectionString(connectionString)
-                .codecRegistry(pojoCodecRegistry)
-                .build();
-        MongoClient mongoClient = MongoClients.create(settings);
-        MongoDatabase db = mongoClient.getDatabase("Learning");
-
-//        MongoCollection<Subject> subjects = db.getCollection("subjects", Subject.class);
-//        subjects.deleteOne(eq("_id",new ObjectId("61343977928ba1565ab15a70")));
-
-//        ObjectId i = new ObjectId();
-//        Subject subject = new Subject();
-//        subject.setName("Hệ thống thông tin quản lý");
-//        subject.setPoster("");
-//        subject.getObjectiveTest_map().put("",i);
-//        addSubject(db,subject);
-
-//        String path = "D:/Du_an_on_thi/txt/";
-//        List<String> readnames=new ArrayList<>();
-//        readnames.add("htttql_phan1");
-//        String subjectname = "Hệ thống thông tin quản lý";
-//        for (String readname: readnames) {
-//            String pathRead = path + readname + ".txt";
-//            ObjectiveTest objectiveTest = new ObjectiveTest();
-//            objectiveTest.setTestName(readname);
-//            List<Question> questionList = ReadTest.readTest(pathRead);
-//            objectiveTest.setQuestions(questionList);
-//            addOTToSubject(db, objectiveTest, subjectname);
-//        }
-
-        mongoClient.close();
-    }
+//    public static void main(String[] args) {
+//        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+//        ConnectionString connectionString = new ConnectionString("mongodb+srv://tuanan8601:fourin1234@cluster0.u4rda.mongodb.net");
+//        MongoClientSettings settings = MongoClientSettings.builder()
+//                .applyConnectionString(connectionString)
+//                .codecRegistry(pojoCodecRegistry)
+//                .build();
+//        MongoClient mongoClient = MongoClients.create(settings);
+//        MongoDatabase db = mongoClient.getDatabase("Learning");
+//
+////        MongoCollection<Subject> subjects = db.getCollection("subjects", Subject.class);
+////        subjects.deleteOne(eq("_id",new ObjectId("61343977928ba1565ab15a70")));
+//
+////        ObjectId i = new ObjectId();
+////        Subject subject = new Subject();
+////        subject.setName("Hệ thống thông tin quản lý");
+////        subject.setPoster("");
+////        subject.getObjectiveTest_map().put("",i);
+////        addSubject(db,subject);
+//
+////        String path = "D:/Du_an_on_thi/txt/";
+////        List<String> readnames=new ArrayList<>();
+////        readnames.add("htttql_phan1");
+////        String subjectname = "Hệ thống thông tin quản lý";
+////        for (String readname: readnames) {
+////            String pathRead = path + readname + ".txt";
+////            ObjectiveTest objectiveTest = new ObjectiveTest();
+////            objectiveTest.setTestName(readname);
+////            List<Question> questionList = ReadTest.readTest(pathRead);
+////            objectiveTest.setQuestions(questionList);
+////            addOTToSubject(db, objectiveTest, subjectname);
+////        }
+//
+//        mongoClient.close();
+//    }
 }

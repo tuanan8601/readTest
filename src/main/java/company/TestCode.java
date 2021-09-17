@@ -42,7 +42,10 @@ public class TestCode {
             }
         }
     }
-    public static void readObject(String objectname,Jedis jedis){
+    public static void readListObject (String objectname,Jedis jedis){
+
+    }
+    public static void readHashObject(String objectname,Jedis jedis){
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
         System.out.println(list);
         Iterator<String> keys = list.iterator();
@@ -68,8 +71,9 @@ public class TestCode {
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis("localhost");
         System.out.println("Connection to server sucessfully");
+
 //        addQuestionList(pathRead,jedis);
 //        deleteAllObject("question",jedis);
-//        readObject("question",jedis);
+//        readHashObject("question",jedis);
     }
 } 
