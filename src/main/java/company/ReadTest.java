@@ -192,7 +192,7 @@ public class ReadTest {
                 }
                 else if(data.startsWith("imageLink: ")){
                     String imgLink = data.substring(data.indexOf("\"")+1);
-                    imgLink = imgLink.substring(0,imgLink.length()-1);
+                    imgLink = imgLink.substring(0,imgLink.indexOf("\""));
                     question.setImage(imgLink);
                 }
                 else if(isAnswer(data)){
