@@ -13,6 +13,7 @@ import java.util.Map;
 public class Subject {
     int id;
     String name;
+    String type;
     String poster;
 //    Map<String,ObjectId> objectiveTest_map = new HashMap();
     Map<String,Integer> objectiveTest_id = new HashMap<>();
