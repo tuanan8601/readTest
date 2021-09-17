@@ -161,7 +161,6 @@ public class RedisDB {
 
 
 
-
 //        String readname = "phan1_htttql";
 //        String pathRead = path+readname+".txt";
 //
