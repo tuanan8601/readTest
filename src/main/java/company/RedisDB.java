@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 
 import java.util.*;
 
-public class TestCode {
+public class RedisDB {
     public static long getMaxIndex(String objectname){
         Jedis jedis = new Jedis("localhost");
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
