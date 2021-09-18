@@ -4,6 +4,7 @@ import company.entity.Answer;
 import company.entity.ObjectiveTest;
 import company.entity.Question;
 import company.entity.Subject;
+import lombok.val;
 import redis.clients.jedis.Jedis;
 
 import java.util.*;
@@ -20,7 +21,7 @@ public class RedisDB {
         index.add(0L);
         return Collections.max(index);
     }
-    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest, Subject subject){
+    public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest,double score, Subject subject){
         List<Question> questionList = ReadTest.readTest(pathRead);
         long i=getMaxIndex("question");
         Map<String,String> map;
@@ -50,7 +51,7 @@ public class RedisDB {
             map.put("subject_id",String.valueOf(subject.getId()));
             jedis.hmset("objectivetest:" + objectiveTest.getId(), map);
             jedis.hsetnx("objectivetestindex", objectiveTest.getTestName(), "" + objectiveTest.getId());
-            jedis.sadd("objectivetestset:subject:" + subject.getId(), "" + objectiveTest.getId());
+            jedis.zadd("objectivetestzset:subject:" + subject.getId(),score, "" + objectiveTest.getId());
 
             for (Question q : questionList) {
                 i++;
@@ -134,6 +135,21 @@ public class RedisDB {
             System.out.println(key+" "+jedis.smembers(key));
         }
     }
+    public static void readZSetObject(String objectname,Jedis jedis){
+        HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
+        System.out.println(list);
+        Iterator<String> keys = list.iterator();
+        while (keys.hasNext()){
+            String key = keys.next();
+            Iterator<String> zset = jedis.zrangeByScore(key, "-inf", "+inf").iterator();
+            Map<String,Double> map = new HashMap<>();
+            while(zset.hasNext()){
+                String zkey = zset.next();
+                map.put(zkey,jedis.zscore(key,zkey));
+            }
+            System.out.println(key+" "+ map);
+        }
+    }
     public static void deleteAllObject(String objectname,Jedis jedis){
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
         System.out.println("deleted:"+list);
@@ -161,20 +177,22 @@ public class RedisDB {
 
 
 
-//        String readname = "phan1_htttql";
+
+//        String readname = "test";
 //        String pathRead = path+readname+".txt";
-//
+//        double score = 200;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest")+1);
 //        objectiveTest.setTestName(readname);
 //
+//
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject")+1);
-//        subject.setName("Hệ thống thông tin quản lý");
-//        subject.setPoster("");
-//        subject.setType("chuyên ngành");
+//        subject.setName("Pháp luật đại cương");
+//        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
+//        subject.setType("đại cương");
 //
-//        addQuestionList(pathRead,jedis,objectiveTest,subject);
+//        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
 
 
@@ -188,6 +206,7 @@ public class RedisDB {
 //        readHashObject("question",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
+//        readZSetObject("objectivetestzset",jedis);
 //        System.out.println(getMaxIndex("answer"));
     }
 } 
