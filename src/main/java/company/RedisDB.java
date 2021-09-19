@@ -10,8 +10,7 @@ import redis.clients.jedis.Jedis;
 import java.util.*;
 
 public class RedisDB {
-    public static long getMaxIndex(String objectname){
-        Jedis jedis = new Jedis("localhost");
+    public static long getMaxIndex(String objectname,Jedis jedis){
         HashSet<String> list = (HashSet<String>) jedis.keys(objectname+":*");
         List<Long> index = new ArrayList<>();
         list.forEach(d->{
@@ -23,7 +22,7 @@ public class RedisDB {
     }
     public static void addQuestionList(String pathRead, Jedis jedis, ObjectiveTest objectiveTest,double score, Subject subject){
         List<Question> questionList = ReadTest.readTest(pathRead);
-        long i=getMaxIndex("question");
+        long i=getMaxIndex("question",jedis);
         Map<String,String> map;
 
         if(!jedis.hexists("subjectindex",subject.getName())) {
@@ -168,31 +167,34 @@ public class RedisDB {
             jedis.del(key);
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         String path = "D:/Du_an_on_thi/txt/";
         //Connecting to Redis server on localhost
-        Jedis jedis = new Jedis("localhost");
-        System.out.println("Connection to server sucessfully");
+        Jedis jedis = new Jedis("redis-18337.c233.eu-west-1-1.ec2.cloud.redislabs.com", 18337);
+        jedis.auth("fourin1234");
+        System.out.println("Connected to Redis");
+//        System.out.println(jedis.keys("*"));
 
 
 
 
 
-//        String readname = "test";
-//        String pathRead = path+readname+".txt";
-//        double score = 200;
-//        ObjectiveTest objectiveTest = new ObjectiveTest();
-//        objectiveTest.setId(getMaxIndex("objectivetest")+1);
-//        objectiveTest.setTestName(readname);
-//
-//
-//        Subject subject = new Subject();
-//        subject.setId(getMaxIndex("subject")+1);
-//        subject.setName("Pháp luật đại cương");
-//        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
-//        subject.setType("đại cương");
-//
-//        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
+        String readname = "chuong3_ktct";
+        String pathRead = path+readname+".txt";
+        double score = 300;
+        ObjectiveTest objectiveTest = new ObjectiveTest();
+        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
+        System.out.println(getMaxIndex("objectivetest",jedis)+1);
+        objectiveTest.setTestName(readname);
+
+        Subject subject = new Subject();
+        subject.setId(getMaxIndex("subject",jedis)+1);
+        System.out.println(getMaxIndex("subject",jedis)+1);
+        subject.setName("Kinh tế chính trị");
+        subject.setPoster("https://drive.google.com/thumbnail?id=1DhFPi7R7TLkLteWGCC_WZ3PukgQxVFMT");
+        subject.setType("đại cương");
+
+        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
 
 
@@ -203,7 +205,7 @@ public class RedisDB {
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
 //        deleteIndex("*",jedis);
 //        deleteAllObject("*",jedis);
-//        readHashObject("question",jedis);
+//        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
