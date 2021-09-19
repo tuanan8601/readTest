@@ -172,11 +172,12 @@ public class RedisDB {
     public static void main(String[] args) throws Exception{
         String path = "D:/Du_an_on_thi/txt/";
         //Connecting to Redis server on localhost
-        Jedis jedis = new Jedis("redis-18337.c233.eu-west-1-1.ec2.cloud.redislabs.com", 18337);
-        jedis.auth("fourin1234");
-        System.out.println("Connected to Redis");
+        Jedis jedis = new Jedis("localhost");
+//        Jedis jedis = new Jedis("redis-18337.c233.eu-west-1-1.ec2.cloud.redislabs.com", 18337);
+//        jedis.auth("fourin1234");
+//        System.out.println("Connected to Redis");
 //        System.out.println(jedis.keys("*"));
-
+        System.out.println(jedis.scan(0));
 
 
 
