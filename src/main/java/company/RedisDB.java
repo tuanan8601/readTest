@@ -7,7 +7,9 @@ import company.entity.Subject;
 import lombok.val;
 import redis.clients.jedis.Jedis;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class RedisDB {
     public static long getMaxIndex(String objectname,Jedis jedis){
@@ -178,37 +180,45 @@ public class RedisDB {
 
 
 
-
-        String readname = "chuong3_ktct";
-        String pathRead = path+readname+".txt";
-        double score = 300;
-        ObjectiveTest objectiveTest = new ObjectiveTest();
-        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
-        System.out.println(getMaxIndex("objectivetest",jedis)+1);
-        objectiveTest.setTestName(readname);
-
-        Subject subject = new Subject();
-        subject.setId(getMaxIndex("subject",jedis)+1);
-        System.out.println(getMaxIndex("subject",jedis)+1);
-        subject.setName("Kinh tế chính trị");
-        subject.setPoster("https://drive.google.com/thumbnail?id=1DhFPi7R7TLkLteWGCC_WZ3PukgQxVFMT");
-        subject.setType("đại cương");
-
-        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
-
-
+        //ADD FUNCTION
+//        String readname = "test";
+//        String pathRead = path+readname+".txt";
+//        double score = 500;
+//        ObjectiveTest objectiveTest = new ObjectiveTest();
+//        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
+//        System.out.println(getMaxIndex("objectivetest",jedis)+1);
+//        objectiveTest.setTestName(readname);
+//
+//        Subject subject = new Subject();
+//        subject.setId(getMaxIndex("subject",jedis)+1);
+//        System.out.println(getMaxIndex("subject",jedis)+1);
+//        subject.setName("Pháp luật đại cương");
+//        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
+//        subject.setType("đại cương");
+//
+//        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
 
 
 
-//        objectiveTestDel("minh_hoa_vi_mo",jedis);
+
+        //READ FUNCTION
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-//        deleteIndex("*",jedis);
-//        deleteAllObject("*",jedis);
 //        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
 //        System.out.println(getMaxIndex("answer"));
+
+
+
+
+        //DELETE FUNCTION
+//        objectiveTestDel("minh_hoa_vi_mo",jedis);
+//        deleteIndex("*",jedis);
+//        deleteAllObject("*",jedis);
+
+
+        Toolkit.getDefaultToolkit().beep();
     }
 } 
