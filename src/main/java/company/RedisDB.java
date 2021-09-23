@@ -6,6 +6,7 @@ import company.entity.Question;
 import company.entity.Subject;
 import lombok.val;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ScanResult;
 
 import java.awt.*;
 import java.util.*;
@@ -177,12 +178,13 @@ public class RedisDB {
 //        jedis.auth("fourin1234");
 //        System.out.println("Connected to Redis");
 //        System.out.println(jedis.keys("*"));
-        System.out.println(jedis.scan(0));
+//        ScanResult a = jedis.scan(0);
+//        System.out.println(a.getResult());
 
 
 
         //ADD FUNCTION
-//        String readname = "test";
+//        String readname = "minh_hoa_vi_mo";
 //        String pathRead = path+readname+".txt";
 //        double score = 500;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
@@ -193,9 +195,9 @@ public class RedisDB {
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject",jedis)+1);
 //        System.out.println(getMaxIndex("subject",jedis)+1);
-//        subject.setName("Pháp luật đại cương");
-//        subject.setPoster("https://drive.google.com/thumbnail?id=1e8iZ5XNI_171Xymk0kbamIN-PqcY2WL4");
-//        subject.setType("đại cương");
+//        subject.setName("Kinh tế vi mô");
+//        subject.setPoster("");
+//        subject.setType("chính quy");
 //
 //        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
