@@ -206,12 +206,14 @@ public class RedisDB {
 
 
         //READ FUNCTION
+//        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
 //        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
 //        System.out.println(getMaxIndex("answer"));
+
 
 
 
