@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Data
 public class Document {
-    String id;
+    long id;
     String docName;
 //    ObjectId subject_id;
     long subject_id;
