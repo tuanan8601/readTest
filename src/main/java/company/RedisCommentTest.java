@@ -19,14 +19,18 @@ public class RedisCommentTest {
         jedis.hmset("comment:"+comment.getId(),map);
         jedis.zadd("commentzset:objectivetest:"+comment.getObjectiveTest_id(),comment.getDate().getTime(),""+comment.getId());
     }
-//    public static void deleteComment(String id,Jedis jedis){
-//        Iterator<String> keys = jedis.keys("comment:"+id).iterator();
-//        while(keys.hasNext()){
-//            String key = keys.next();
-//            System.out.println(key);
-//            jedis.del(key);
-//        }
-//    }
+    public static void deleteComment(String id,Jedis jedis){
+        Iterator<String> keys = jedis.keys("comment:"+id).iterator();
+        while(keys.hasNext()){
+            String key = keys.next();
+            System.out.println(key);
+            String comment_id = key.split(":")[1];
+            String ojt_id = jedis.hget(key,"objectiveTest_id");
+            System.out.println("commentzset:objectivetest:"+ojt_id+" "+comment_id);
+            jedis.zrem("commentzset:objectivetest:"+ojt_id,comment_id);
+            jedis.del(key);
+        }
+    }
     public static void main(String[] args) {
         Jedis jedis = new Jedis("localhost");
         Comment comment = new Comment();
@@ -37,9 +41,21 @@ public class RedisCommentTest {
         comment.setObjectiveTest_id(4);
         comment.setDate(new Date());
         System.out.println(comment);
+
+
+
+        //ADD FUNCTION
 //        addComment(comment,jedis);
+
+
+
+        //READ FUNCTION
 //        RedisDB.readHashObject("comment",jedis);
-        RedisDB.readZSetObject("commentzset",jedis);
-//        deleteComment("*",jedis);
+//        RedisDB.readZSetObject("commentzset",jedis);
+
+
+
+        //DELETE FUNCTION
+//        deleteComment("2",jedis);
     }
 }
