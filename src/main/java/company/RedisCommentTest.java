@@ -33,18 +33,18 @@ public class RedisCommentTest {
     }
     public static void main(String[] args) {
         Jedis jedis = new Jedis("localhost");
-        Comment comment = new Comment();
-        comment.setEmail("tuanan8601@gmail.com");
-        comment.setId(RedisDB.getMaxIndex("comment",jedis)+1);
-        comment.setName("Tuấn An Nguyễn");
-        comment.setText("Thank you");
-        comment.setObjectiveTest_id(4);
-        comment.setDate(new Date());
-        System.out.println(comment);
 
 
 
         //ADD FUNCTION
+//        Comment comment = new Comment();
+//        comment.setEmail("tuanan8601@gmail.com");
+//        comment.setId(RedisDB.getMaxIndex("comment",jedis)+1);
+//        comment.setName("Tuấn An Nguyễn");
+//        comment.setText("Thank you");
+//        comment.setObjectiveTest_id(4);
+//        comment.setDate(new Date());
+//        System.out.println(comment);
 //        addComment(comment,jedis);
 
 
