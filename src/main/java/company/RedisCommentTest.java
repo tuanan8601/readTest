@@ -50,12 +50,12 @@ public class RedisCommentTest {
 
 
         //READ FUNCTION
-//        RedisDB.readHashObject("comment",jedis);
+        RedisDB.readHashObject("comment",jedis);
 //        RedisDB.readZSetObject("commentzset",jedis);
 
 
 
         //DELETE FUNCTION
-//        deleteComment("2",jedis);
+//        deleteComment("*",jedis);
     }
 }
