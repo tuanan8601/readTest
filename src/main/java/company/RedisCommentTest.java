@@ -7,19 +7,19 @@ import java.time.Instant;
 import java.util.*;
 
 public class RedisCommentTest {
-    public static void addComment(Comment comment,Jedis jedis){
-        Map<String,String> map = new HashMap<>();
-        map.put("id",String.valueOf(comment.getId()));
-        map.put("name",comment.getName());
-        map.put("email",comment.getEmail());
-        map.put("text",comment.getText());
-        map.put("objectiveTest_id",String.valueOf(comment.getObjectiveTest_id()));
-        map.put("date",String.valueOf(comment.getDate().getTime()));
-        System.out.println(map);
-        jedis.set("maxcomment",""+comment.getId());
-        jedis.hmset("comment:"+comment.getId(),map);
-        jedis.zadd("commentzset:objectivetest:"+comment.getObjectiveTest_id(),comment.getDate().getTime(),""+comment.getId());
-    }
+//    public static void addComment(Comment comment,Jedis jedis){
+//        Map<String,String> map = new HashMap<>();
+//        map.put("id",String.valueOf(comment.getId()));
+//        map.put("name",comment.getName());
+//        map.put("email",comment.getEmail());
+//        map.put("text",comment.getText());
+//        map.put("objectiveTest_id",String.valueOf(comment.getObjectiveTest_id()));
+//        map.put("date",String.valueOf(comment.getDate().getTime()));
+//        System.out.println(map);
+//        jedis.set("maxcomment",""+comment.getId());
+//        jedis.hmset("comment:"+comment.getId(),map);
+//        jedis.zadd("commentzset:objectivetest:"+comment.getObjectiveTest_id(),comment.getDate().getTime(),""+comment.getId());
+//    }
     public static void deleteComment(String id,Jedis jedis){
         Iterator<String> keys = jedis.keys("comment:"+id).iterator();
         while(keys.hasNext()){
