@@ -51,7 +51,7 @@ public class RedisCommentTest {
 
 
         //READ FUNCTION
-        RedisDB.readHashObject("comment",jedis);
+//        RedisDB.readHashObject("comment",jedis);
 //        RedisDB.readZSetObject("commentzset",jedis);
 
 
