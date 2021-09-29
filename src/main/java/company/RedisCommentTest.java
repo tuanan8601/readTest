@@ -16,6 +16,7 @@ public class RedisCommentTest {
         map.put("objectiveTest_id",String.valueOf(comment.getObjectiveTest_id()));
         map.put("date",String.valueOf(comment.getDate().getTime()));
         System.out.println(map);
+        jedis.set("maxcomment",""+comment.getId());
         jedis.hmset("comment:"+comment.getId(),map);
         jedis.zadd("commentzset:objectivetest:"+comment.getObjectiveTest_id(),comment.getDate().getTime(),""+comment.getId());
     }
