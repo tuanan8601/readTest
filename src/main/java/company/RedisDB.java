@@ -115,8 +115,8 @@ public class RedisDB {
         long len;
         while (keys.hasNext()){
             String key = keys.next();
-            len = jedis.llen(key)+1;
-            System.out.println(key+" "+jedis.lrange(key,1,len));
+            len = jedis.llen(key);
+            System.out.println(key+" "+jedis.lrange(key,0,len));
         }
     }
     public static void readHashObject(String objectname,Jedis jedis){
