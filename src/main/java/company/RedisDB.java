@@ -116,7 +116,7 @@ public class RedisDB {
         while (keys.hasNext()){
             String key = keys.next();
             len = jedis.llen(key);
-            System.out.println(key+" "+jedis.lrange(key,0,len));
+            System.out.println(key+" "+jedis.lrange(key,0,len-1));
         }
     }
     public static void readHashObject(String objectname,Jedis jedis){
@@ -209,7 +209,7 @@ public class RedisDB {
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
 //        readHashObject("objectivetest",jedis);
-        readListObject("answer:question",jedis);
+//        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
 //        System.out.println(getMaxIndex("answer"));
