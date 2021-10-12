@@ -36,7 +36,6 @@ public class RedisCommentTest {
         Jedis jedis = new Jedis("localhost");
 
 
-
         //ADD FUNCTION
 //        Comment comment = new Comment();
 //        comment.setEmail("tuanan8601@gmail.com");
