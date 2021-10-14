@@ -42,6 +42,7 @@ public class RedisDB {
         else {
             System.out.println("Môn học đã có");
             subject.setId(Long.parseLong(jedis.hget("subjectindex", subject.getName())));
+            System.out.println(jedis.hgetAll("subject:"+subject.getId()));
         }
 
         if(!jedis.hexists("objectivetestindex",objectiveTest.getTestName())) {
@@ -74,7 +75,10 @@ public class RedisDB {
                 jedis.sadd("questionset:objectivetest:" + objectiveTest.getId(), String.valueOf(i));
             }
         }
-        else System.out.println("Bài trắc nghiệm đã có");
+        else{
+            System.out.println("Bài trắc nghiệm đã có");
+            System.out.println(jedis.hgetAll("objectivetest:"+jedis.hget("objectivetestindex",objectiveTest.getTestName())));
+        }
     }
     public static void objectiveTestDel(String oTName, Jedis jedis){
         String i = jedis.hget("objectivetestindex",oTName);
@@ -97,9 +101,9 @@ public class RedisDB {
             System.out.println("\n" + jedis.hgetAll(oT_key));
             System.out.println(qset_key);
             jedis.del(qset_key);
-            String oTs_key = "objectivetestset:subject:" + jedis.hget(oT_key, "subject_id");
+            String oTs_key = "objectivetestzset:subject:" + jedis.hget(oT_key, "subject_id");
             System.out.println(oTs_key);
-            jedis.srem(oTs_key, i);
+            jedis.zrem(oTs_key, i);
             System.out.println(oT_key);
             jedis.del(oT_key);
             String oTi_key = "objectivetestindex";
@@ -171,7 +175,7 @@ public class RedisDB {
         }
     }
     public static void main(String[] args) throws Exception{
-        String path = "D:/Du_an_on_thi/txt/";
+
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis("localhost");
 //        Jedis jedis = new Jedis("redis-18337.c233.eu-west-1-1.ec2.cloud.redislabs.com", 18337);
@@ -184,9 +188,10 @@ public class RedisDB {
 
 
         //ADD FUNCTION
-//        String readname = "minh_hoa_vi_mo";
+//        String path = "D:/Du_an_on_thi/txt/";
+//        String readname = "phan1_htttql";
 //        String pathRead = path+readname+".txt";
-//        double score = 500;
+//        double score = 10;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
 //        System.out.println(getMaxIndex("objectivetest",jedis)+1);
@@ -195,9 +200,9 @@ public class RedisDB {
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject",jedis)+1);
 //        System.out.println(getMaxIndex("subject",jedis)+1);
-//        subject.setName("Kinh tế vi mô");
+//        subject.setName("Hệ thống thông tin quản lý");
 //        subject.setPoster("");
-//        subject.setType("chính quy");
+//        subject.setType("chuyên ngành");
 //
 //        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
@@ -219,7 +224,7 @@ public class RedisDB {
 
 
         //DELETE FUNCTION
-//        objectiveTestDel("minh_hoa_vi_mo",jedis);
+//        objectiveTestDel("phan1_htttql",jedis);
 //        deleteIndex("*",jedis);
 //        deleteAllObject("*",jedis);
 
