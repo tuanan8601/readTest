@@ -189,9 +189,9 @@ public class RedisDB {
 
         //ADD FUNCTION
 //        String path = "D:/Du_an_on_thi/txt/";
-//        String readname = "phan1_htttql";
+//        String readname = "phan2_htttql";
 //        String pathRead = path+readname+".txt";
-//        double score = 10;
+//        double score = 20;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
 //        System.out.println(getMaxIndex("objectivetest",jedis)+1);
@@ -213,7 +213,7 @@ public class RedisDB {
         //READ FUNCTION
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-//        readHashObject("objectivetest",jedis);
+//        readHashObject("question",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);

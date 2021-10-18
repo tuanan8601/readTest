@@ -87,12 +87,21 @@ public class WriteTest {
             html=html+inputLine;
         in.close();
         html = html.replace("<img src=","<img src>imageLink: ");
+        html.substring(html.indexOf("role=\"list\""));
+        System.out.println(html);
         String txt = html2text(html);
-        txt = txt.substring(txt.indexOf("Cảm ơn mọi người nhiều ạ"));
         txt = txt.substring(txt.indexOf("&nbsp;"));
         txt = txt.substring(0,txt.indexOf("Nội dung này không phải do Google tạo ra hay xác nhận"));
 //        System.out.println(txt);
         stringToTxtFile(txt,filename,path);
         correctImgLink(path+filename+".txt");
+    }
+
+    public static void main(String[] args) throws IOException {
+        String path = "D:/Du_an_on_thi/txt/";
+        String readname = "phan4_htttql";
+
+        String url = "https://docs.google.com/forms/d/e/1FAIpQLSekhCcQbpoI_VW3iO5x_uQy82aZct64VEbzSYgAHlIsrCZb5Q/viewscore?viewscore=AE0zAgBaKdrvXgrQRK6IM2Ajk_H7G9LAfmkVEeNOG8uuuBGyf0fV-HSG5ZAQi63_SUg27Ug";
+        writeTest(readname,path,url);
     }
 }
