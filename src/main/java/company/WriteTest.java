@@ -89,7 +89,7 @@ public class WriteTest {
         html = html.replace("<img src=","<img src>imageLink: ");
         html = "<" + html.substring(html.indexOf("role=\"list\""));
         String txt = html2text(html);
-        System.out.println(txt);
+//        System.out.println(txt);
         txt = txt.substring(txt.indexOf("&nbsp;"));
         txt = txt.substring(0,txt.indexOf("Nội dung này không phải do Google tạo ra hay xác nhận"));
 //        System.out.println(txt);
