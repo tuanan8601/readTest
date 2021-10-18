@@ -97,11 +97,11 @@ public class WriteTest {
         correctImgLink(path+filename+".txt");
     }
 
-    public static void main(String[] args) throws IOException {
-        String path = "D:/Du_an_on_thi/txt/";
-        String readname = "phan4_htttql";
-
-        String url = "https://docs.google.com/forms/d/e/1FAIpQLSekhCcQbpoI_VW3iO5x_uQy82aZct64VEbzSYgAHlIsrCZb5Q/viewscore?viewscore=AE0zAgBaKdrvXgrQRK6IM2Ajk_H7G9LAfmkVEeNOG8uuuBGyf0fV-HSG5ZAQi63_SUg27Ug";
-        writeTest(readname,path,url);
-    }
+//    public static void main(String[] args) throws IOException {
+//        String path = "D:/Du_an_on_thi/txt/";
+//        String readname = "phan4_htttql";
+//
+//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSekhCcQbpoI_VW3iO5x_uQy82aZct64VEbzSYgAHlIsrCZb5Q/viewscore?viewscore=AE0zAgBaKdrvXgrQRK6IM2Ajk_H7G9LAfmkVEeNOG8uuuBGyf0fV-HSG5ZAQi63_SUg27Ug";
+//        writeTest(readname,path,url);
+//    }
 }
