@@ -49,6 +49,7 @@ public class RedisDB {
             map = new HashMap<>();
             map.put("id", String.valueOf(objectiveTest.getId()));
             map.put("testname", objectiveTest.getTestName());
+            map.put("time", String.valueOf(objectiveTest.getTime()));
             if (objectiveTest.getPoster() != null)
                 map.put("poster", objectiveTest.getPoster());
             map.put("subject_id",String.valueOf(subject.getId()));
@@ -187,7 +188,7 @@ public class RedisDB {
 
 
 
-        //ADD FUNCTION
+//        ADD FUNCTION
 //        String path = "D:/Du_an_on_thi/txt/";
 //        String readname = "phan4_htttql";
 //        String pathRead = path+readname+".txt";
@@ -196,6 +197,7 @@ public class RedisDB {
 //        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
 //        System.out.println(getMaxIndex("objectivetest",jedis)+1);
 //        objectiveTest.setTestName(readname);
+//        objectiveTest.setTime(0);
 //
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject",jedis)+1);

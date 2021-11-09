@@ -13,5 +13,6 @@ public class ObjectiveTest {
 //    ObjectId subject_id;
     long subject_id;
     String poster;
+    long time;
     List<Question> questions = new ArrayList<>();
 }
