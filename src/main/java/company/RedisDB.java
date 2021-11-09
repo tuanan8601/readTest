@@ -175,6 +175,16 @@ public class RedisDB {
             jedis.del(key);
         }
     }
+    public static void updateHashObject(String pattern,String field, String value,Jedis jedis){
+        HashSet<String> list = (HashSet<String>) jedis.keys(pattern);
+        System.out.println(list);
+        Iterator<String> keys = list.iterator();
+        while (keys.hasNext()){
+            String key = keys.next();
+            jedis.hset(key,field,value);
+            System.out.println(key+" "+jedis.hgetAll(key));
+        }
+    }
     public static void main(String[] args) throws Exception{
 
         //Connecting to Redis server on localhost
@@ -215,7 +225,7 @@ public class RedisDB {
         //READ FUNCTION
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-//        readHashObject("question",jedis);
+        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
@@ -223,6 +233,16 @@ public class RedisDB {
 
 
 
+
+
+
+
+
+
+
+
+        //UPDATE FUNCTION
+//            updateHashObject("objectivetest:11","time","60",jedis);
 
 
         //DELETE FUNCTION
