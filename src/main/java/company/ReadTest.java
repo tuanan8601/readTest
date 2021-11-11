@@ -311,9 +311,9 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "phan4_htttql";
+        String readname = "chuong3_tu_tuong_hcm";
 
-//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSekhCcQbpoI_VW3iO5x_uQy82aZct64VEbzSYgAHlIsrCZb5Q/viewscore?viewscore=AE0zAgBaKdrvXgrQRK6IM2Ajk_H7G9LAfmkVEeNOG8uuuBGyf0fV-HSG5ZAQi63_SUg27Ug";
+//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSf9pfdDJWz2eekVX2080C7lbECBdTxDYxbqeRsQaSni1DRDpw/viewscore?viewscore=AE0zAgAwvRjJgPuDKRJ4l4tBhrvnuzmczPr7FA9CJuUhcn-_3pBRvM2TLYe0DvvMJnberro";
 //        WriteTest.writeTest(readname,path,url);
 
         String correctname = readname + "_correct";

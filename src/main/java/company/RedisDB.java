@@ -199,24 +199,24 @@ public class RedisDB {
 
 
 //        ADD FUNCTION
-//        String path = "D:/Du_an_on_thi/txt/";
-//        String readname = "phan4_htttql";
-//        String pathRead = path+readname+".txt";
-//        double score = 40;
-//        ObjectiveTest objectiveTest = new ObjectiveTest();
-//        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
-//        System.out.println(getMaxIndex("objectivetest",jedis)+1);
-//        objectiveTest.setTestName(readname);
-//        objectiveTest.setTime(0);
-//
-//        Subject subject = new Subject();
-//        subject.setId(getMaxIndex("subject",jedis)+1);
-//        System.out.println(getMaxIndex("subject",jedis)+1);
-//        subject.setName("Hệ thống thông tin quản lý");
-//        subject.setPoster("");
-//        subject.setType("chuyên ngành");
-//
-//        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
+        String path = "D:/Du_an_on_thi/txt/";
+        String readname = "chuong3_tu_tuong_hcm";
+        String pathRead = path+readname+".txt";
+        double score = 30;
+        ObjectiveTest objectiveTest = new ObjectiveTest();
+        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
+        System.out.println(getMaxIndex("objectivetest",jedis)+1);
+        objectiveTest.setTestName(readname);
+        objectiveTest.setTime(0);
+
+        Subject subject = new Subject();
+        subject.setId(getMaxIndex("subject",jedis)+1);
+        System.out.println(getMaxIndex("subject",jedis)+1);
+        subject.setName("Tư tưởng Hồ Chí Minh");
+        subject.setPoster("");
+        subject.setType("đại cương");
+
+        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
 
 
@@ -225,7 +225,7 @@ public class RedisDB {
         //READ FUNCTION
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-        readHashObject("objectivetest",jedis);
+//        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
