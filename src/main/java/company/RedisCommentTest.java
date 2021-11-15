@@ -56,6 +56,7 @@ public class RedisCommentTest {
 
 
         //DELETE FUNCTION
+//        deleteComment("19",jedis);
 //        deleteComment("*",jedis);
 //        jedis.set("maxcomment",RedisDB.getMaxIndex("comment",jedis)+"");
     }
