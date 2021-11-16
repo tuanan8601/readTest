@@ -11,6 +11,7 @@ public class Comment {
     long id;
     private String name;
     private String email;
+    private String photoURL;
     private String text;
     //    private ObjectId objectiveTest_id;
     long objectiveTest_id;

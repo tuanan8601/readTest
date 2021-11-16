@@ -15,6 +15,7 @@ public class RedisCommentTest {
 //        map.put("text",comment.getText());
 //        map.put("objectiveTest_id",String.valueOf(comment.getObjectiveTest_id()));
 //        map.put("date",String.valueOf(comment.getDate().getTime()));
+//        map.put("photoURL",comment.getPhotoURL());
 //        System.out.println(map);
 //        jedis.set("maxcomment",""+comment.getId());
 //        jedis.hmset("comment:"+comment.getId(),map);
@@ -41,6 +42,7 @@ public class RedisCommentTest {
 //        comment.setEmail("tuanan8601@gmail.com");
 //        comment.setId(RedisDB.getMaxIndex("comment",jedis)+1);
 //        comment.setName("Tuấn An Nguyễn");
+//        comment.setPhotoURL("");
 //        comment.setText("Thank you");
 //        comment.setObjectiveTest_id(4);
 //        comment.setDate(new Date());
