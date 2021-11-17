@@ -247,7 +247,7 @@ public class RedisDB {
 
 
         //DELETE FUNCTION
-//        objectiveTestDel("chuong1_mang_mt_truyen_sl",jedis);
+//        objectiveTestDel("phan1_mang_mt_truyen_sl",jedis);
 //        deleteIndex("*",jedis);
 //        deleteAllObject("*",jedis);
 
