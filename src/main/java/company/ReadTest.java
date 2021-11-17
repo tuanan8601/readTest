@@ -203,6 +203,7 @@ public class ReadTest {
                                 // DATA <- data
                                 data = data.trim();
                                 feedback = feedback + data + "<br>";
+                                question.setFeedback(feedback);
 
                                 //TITLE <- next
                                 if(i>0){
@@ -222,9 +223,10 @@ public class ReadTest {
                                 answer.setAnswerHead(next2.charAt(0));
                                 question.getAnswers().add(answer);
                             }
-                            else feedback = feedback + next + "<br>" + next2 + "<br>";
-//                    System.out.println(i+". ctld_ "+data);
-                            question.setFeedback(feedback);
+                            else{
+                                feedback = feedback + next + "<br>" + next2 + "<br>";
+                                question.setFeedback(feedback);
+                            }
                         }
                         else question.setFeedback(data+"<br>"+next);
                     }
@@ -351,7 +353,7 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "phan1_mang_mt_truyen_sl";
+        String readname = "phan1_htttql";
 
 //        String url = "https://docs.google.com/forms/d/e/1FAIpQLSeTrExFT10g61qKaznWhhdwgT-mpt9Y2NxVri9nTKX0RwtKNg/viewscore?viewscore=AE0zAgAAg5Y5oQiL-syA5sgBHXHdyx2e-3ABdi1AO5Rsd0m0wUpZ7b2GUGxngQvWFG-sdwc";
 //        WriteTest.writeTest(readname,path,url);
