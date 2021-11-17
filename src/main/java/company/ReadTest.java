@@ -187,9 +187,48 @@ public class ReadTest {
                 else if(data.equals("Phản hồi")){
 //                    System.out.println(i+". ctld_str_ "+data);
                     data = myReader.nextLine();
-                    data=data.trim();
+                    if(myReader.hasNextLine()) {
+                        String next = myReader.nextLine();
+                        if(myReader.hasNextLine()) {
+                            String next2 = myReader.nextLine();
+                            String feedback = "";
+                            while (!isAnswer(next2)&&myReader.hasNextLine()) {
+                                data = data.trim();
+                                feedback = feedback + data + "\n";
+                                data = next;
+                                next = next2;
+                                next2 = myReader.nextLine();
+                            }
+                            if(myReader.hasNextLine()){
+                                // DATA <- data
+                                data = data.trim();
+                                feedback = feedback + data + "\n";
+
+                                //TITLE <- next
+                                if(i>0){
+                                    System.out.println(question);
+                                    questions.add(question);
+                                }
+                                i++;
+//                    System.out.println(i+". tt_ "+data);
+                                question = new Question();
+                                question.setTitle(next);
+                                System.out.println();
+
+                                //ANSWER <- next2
+                                System.out.println(next2.substring(0,1));
+                                Answer answer = new Answer();
+                                answer.setAnswer(next2);
+                                answer.setAnswerHead(next2.charAt(0));
+                                question.getAnswers().add(answer);
+                            }
+                            else feedback = feedback + next + "\n" + next2 + "\n";
 //                    System.out.println(i+". ctld_ "+data);
-                    question.setFeedback(data);
+                            question.setFeedback(feedback);
+                        }
+                        else question.setFeedback(data+"\n"+next);
+                    }
+                    else question.setFeedback(data);
                 }
                 else if(data.startsWith("imageLink: ")){
                     String imgLink = data.substring(data.indexOf("\"")+1);
@@ -312,9 +351,9 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "chuong1_vixmo";
+        String readname = "chuong1_mang_mt_truyen_sl";
 
-//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSfCT44sNZajYhS_YT2b0PcFgaM0y3LePkCc2OICphJ4NWdoGA/viewscore?viewscore=AE0zAgDuyoXZuB6PPjKS8XrNwCu8ObMtl-vfpUwsfgaV4kbTvj7mvl87ZH6yiDiTRbw8NlQ";
+//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSeTrExFT10g61qKaznWhhdwgT-mpt9Y2NxVri9nTKX0RwtKNg/viewscore?viewscore=AE0zAgAAg5Y5oQiL-syA5sgBHXHdyx2e-3ABdi1AO5Rsd0m0wUpZ7b2GUGxngQvWFG-sdwc";
 //        WriteTest.writeTest(readname,path,url);
 
         String correctname = readname + "_correct";

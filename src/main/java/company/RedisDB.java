@@ -200,9 +200,9 @@ public class RedisDB {
 
         //ADD FUNCTION
 //        String path = "D:/Du_an_on_thi/txt/";
-//        String readname = "chuong3_tu_tuong_hcm";
+//        String readname = "chuong1_mang_mt_truyen_sl";
 //        String pathRead = path+readname+".txt";
-//        double score = 30;
+//        double score = 10;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
 //        System.out.println(getMaxIndex("objectivetest",jedis)+1);
@@ -212,9 +212,9 @@ public class RedisDB {
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject",jedis)+1);
 //        System.out.println(getMaxIndex("subject",jedis)+1);
-//        subject.setName("Tư tưởng Hồ Chí Minh");
-//        subject.setPoster("");
-//        subject.setType("đại cương");
+//        subject.setName("Mạng máy tính và truyền số liệu");
+//        subject.setPoster("https://it.tdtu.edu.vn/sites/cntt/files/articles/mmt.jpg");
+//        subject.setType("chuyên ngành");
 //
 //        addQuestionList(pathRead,jedis,objectiveTest,score,subject);
 
@@ -225,7 +225,7 @@ public class RedisDB {
         //READ FUNCTION
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-//        readHashObject("objectivetest",jedis);
+//        readHashObject("subject",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
@@ -242,7 +242,8 @@ public class RedisDB {
 
 
         //UPDATE FUNCTION
-//            updateHashObject("objectivetest:11","time","60",jedis);
+//        updateHashObject("objectivetest:11","time","60",jedis);
+//        updateHashObject("subject:11","poster","https://drive.google.com/thumbnail?id=122dSEIpF2CyEvz9Qcfb-rWUt4YrDl0jx",jedis);
 
 
         //DELETE FUNCTION
