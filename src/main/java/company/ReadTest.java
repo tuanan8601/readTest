@@ -194,7 +194,7 @@ public class ReadTest {
                             String feedback = "";
                             while (!isAnswer(next2)&&myReader.hasNextLine()) {
                                 data = data.trim();
-                                feedback = feedback + data + "\n";
+                                feedback = feedback + data + "<br>";
                                 data = next;
                                 next = next2;
                                 next2 = myReader.nextLine();
@@ -202,7 +202,7 @@ public class ReadTest {
                             if(myReader.hasNextLine()){
                                 // DATA <- data
                                 data = data.trim();
-                                feedback = feedback + data + "\n";
+                                feedback = feedback + data + "<br>";
 
                                 //TITLE <- next
                                 if(i>0){
@@ -222,11 +222,11 @@ public class ReadTest {
                                 answer.setAnswerHead(next2.charAt(0));
                                 question.getAnswers().add(answer);
                             }
-                            else feedback = feedback + next + "\n" + next2 + "\n";
+                            else feedback = feedback + next + "<br>" + next2 + "<br>";
 //                    System.out.println(i+". ctld_ "+data);
                             question.setFeedback(feedback);
                         }
-                        else question.setFeedback(data+"\n"+next);
+                        else question.setFeedback(data+"<br>"+next);
                     }
                     else question.setFeedback(data);
                 }
