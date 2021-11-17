@@ -25,7 +25,8 @@ public class ReadTest {
     }
 
     public static boolean isAnswer(String str){
-        return !isNumeric(str.substring(0,1))&&str.charAt(1)=='.';
+
+        return !isNumeric(str.substring(0,1))&&(str.charAt(1)=='.'||str.charAt(1)==','||str.charAt(1)==')');
     }
 
     public static void deletePage(String pathname){
@@ -311,9 +312,9 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "chuong3_tu_tuong_hcm";
+        String readname = "chuong1_vixmo";
 
-//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSf9pfdDJWz2eekVX2080C7lbECBdTxDYxbqeRsQaSni1DRDpw/viewscore?viewscore=AE0zAgAwvRjJgPuDKRJ4l4tBhrvnuzmczPr7FA9CJuUhcn-_3pBRvM2TLYe0DvvMJnberro";
+//        String url = "https://docs.google.com/forms/d/e/1FAIpQLSfCT44sNZajYhS_YT2b0PcFgaM0y3LePkCc2OICphJ4NWdoGA/viewscore?viewscore=AE0zAgDuyoXZuB6PPjKS8XrNwCu8ObMtl-vfpUwsfgaV4kbTvj7mvl87ZH6yiDiTRbw8NlQ";
 //        WriteTest.writeTest(readname,path,url);
 
         String correctname = readname + "_correct";
