@@ -244,7 +244,8 @@ public class RedisDB {
         //UPDATE FUNCTION
 //        updateHashObject("objectivetest:51","time","10",jedis);
 //        updateHashObject("subject:11","poster","https://drive.google.com/thumbnail?id=122dSEIpF2CyEvz9Qcfb-rWUt4YrDl0jx",jedis);
-
+//        System.out.println(jedis.lrange("answer:question:1344",0,3));
+//        jedis.lset("answer:question:1344",3,"A. Trong 1 số trường họp đúng, 1 số khác thì sai");
 
         //DELETE FUNCTION
 //        objectiveTestDel("phan1_mang_mt_truyen_sl",jedis);
