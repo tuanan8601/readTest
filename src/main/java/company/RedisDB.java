@@ -242,7 +242,7 @@ public class RedisDB {
 
 
         //UPDATE FUNCTION
-//        updateHashObject("objectivetest:11","time","60",jedis);
+//        updateHashObject("objectivetest:51","time","10",jedis);
 //        updateHashObject("subject:11","poster","https://drive.google.com/thumbnail?id=122dSEIpF2CyEvz9Qcfb-rWUt4YrDl0jx",jedis);
 
 
