@@ -200,9 +200,9 @@ public class RedisDB {
 
         //ADD FUNCTION
 //        String path = "D:/Du_an_on_thi/txt/";
-//        String readname = "phan1_mang_mt_truyen_sl";
+//        String readname = "phan2_mang_mt_truyen_sl";
 //        String pathRead = path+readname+".txt";
-//        double score = 10;
+//        double score = 20;
 //        ObjectiveTest objectiveTest = new ObjectiveTest();
 //        objectiveTest.setId(getMaxIndex("objectivetest",jedis)+1);
 //        System.out.println(getMaxIndex("objectivetest",jedis)+1);
@@ -212,7 +212,7 @@ public class RedisDB {
 //        Subject subject = new Subject();
 //        subject.setId(getMaxIndex("subject",jedis)+1);
 //        System.out.println(getMaxIndex("subject",jedis)+1);
-//        subject.setName("Mạng máy tính và truyền số liệu");
+//        subject.setName("Nhập môn công nghệ thông tin");
 //        subject.setPoster("https://drive.google.com/thumbnail?id=122dSEIpF2CyEvz9Qcfb-rWUt4YrDl0jx");
 //        subject.setType("chuyên ngành");
 //
@@ -225,7 +225,7 @@ public class RedisDB {
         //READ FUNCTION
 //        System.out.println(jedis.keys("*index"));
 //        System.out.println(jedis.hgetAll("objectivetestindex"));
-//        readHashObject("objectivetest",jedis);
+        readHashObject("objectivetest",jedis);
 //        readListObject("answer:question",jedis);
 //        readSetObject("subjecttypeindex",jedis);
 //        readZSetObject("objectivetestzset",jedis);
