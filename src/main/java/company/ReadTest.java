@@ -386,6 +386,9 @@ public class ReadTest {
         getCorrectAnswer(pathRead,pathCorrect);
 
         List<Question> questionList = readTest(pathRead);
+        questionList.forEach(d->{
+            d.setId(questionList.indexOf(d));
+        });
         objectiveTest.setQuestions(questionList);
 
         System.out.println(objectiveTest);
