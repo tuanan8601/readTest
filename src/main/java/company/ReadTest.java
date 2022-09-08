@@ -351,9 +351,9 @@ public class ReadTest {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void tesToAll(String name) throws IOException {
         String path = "D:/Du_an_on_thi/txt/";
-        String readname = "phan2_mang_mt_truyen_sl";
+        String readname = name;
 
 //        String url = "https://docs.google.com/forms/d/e/1FAIpQLSdGDBt0eZTYGHTCdr1T0bcsux0iDjm5ghb5e2wpMDERPeeehw/viewscore?viewscore=AE0zAgADihze8W3oSYsjBm_M1FeUvlJO-LoQlTmbfLsh2HVn90QTA-WtZpliDDJyYFwRjdw";
 //        WriteTest.writeTest(readname,path,url);
