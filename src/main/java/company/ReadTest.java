@@ -387,7 +387,7 @@ public class ReadTest {
 
         List<Question> questionList = readTest(pathRead);
         questionList.forEach(d->{
-            d.setId(questionList.indexOf(d));
+            d.setQid(questionList.indexOf(d));
         });
         objectiveTest.setQuestions(questionList);
 
